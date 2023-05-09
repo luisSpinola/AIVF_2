@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { VALUE_COLOR, VALUE_HEIGHT, VALUE_INVERT_AXES, VALUE_MARGIN_BOTTTOM, VALUE_MARGIN_LEFT, VALUE_MARGIN_RIGHT, VALUE_MARGIN_TOP } from "../utils/defaults/defaults";
 import { getGraphComponent, setPreferences } from "../utils/shared/functions";
+import { BarPlot } from "../libraries/recharts/BarPlot";
 
 export default function BarPlotComponent({id, data}) {
     const [options, setOptions] = useState({
@@ -26,7 +27,7 @@ export default function BarPlotComponent({id, data}) {
 
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt)}
+            {getGraphComponent(needAdapt, <BarPlot data={data} options={options}/>)}
         </React.Fragment>
     )
 }
