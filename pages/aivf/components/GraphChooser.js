@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 //  STRINGS
 import { ERROR_TYPE_NOT_FOUND } from '../utils/localization/ptPt';
+
 import OneNumerical from '../data_types/One_Numerical';
 
 export default function GraphChooser({identifier, data, options}) {

@@ -5,3 +5,6 @@ export const ERROR_GRAPH_NOT_FOUND = "Ocorreu um erro ao gerar este gráfico (GR
 //PLOTS
 export const BAR_PLOT = "Barras";
 export const PIE_CHART = "Setores";
+
+//ADAPT
+export const ADAPT_LOADING = "A adaptar";
