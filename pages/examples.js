@@ -1,7 +1,8 @@
 export const example_one_numerical_1 = {
     header: {
         type:'one_numerical',
-        id: ["Country"], value: ["GW"],
+        id: ["Country"], 
+        value: ["GW"],
         preferences: [{
             height: 450
         }]
