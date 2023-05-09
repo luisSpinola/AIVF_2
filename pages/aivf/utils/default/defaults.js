@@ -1,4 +1,4 @@
-export const VALUE_HEIGHT = 350;
+export const VALUE_HEIGHT = 250;
 export const VALUE_INVERT_AXES = false;
 //  MARGIN
 export const VALUE_MARGIN_TOP = 0;
@@ -8,7 +8,7 @@ export const VALUE_MARGIN_RIGHT = 0;
 //  LABEL LIST
 export const VALUE_LABELLIST = true;
 export const VALUE_LABELLIST_POSITION = 'top';
-export const VALUE_LABELLIST_OFFSET = -20;
+export const VALUE_LABELLIST_OFFSET = 5;
 export const VALUE_LABELLIST_ANGLE = 0;
 //  LEGEND
 export const VALUE_LEGEND = true;

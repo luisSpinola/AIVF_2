@@ -1,14 +1,12 @@
 import React from "react";
 //  RECHARTS
-import { ResponsiveContainer, ComposedChart, BarChart, Bar, LabelList, Tooltip } from "recharts";
+import { ResponsiveContainer, BarChart, Bar, LabelList, Tooltip } from "recharts";
 import { handleAxes, handleGridOptions, handleLegendOptions } from "./components/components";
 //  SHARED
 import { getDataFormater } from "../../utils/shared/dataFormatters";
 import { getOptionIfExists } from "../../utils/shared/functions";
 
-
 export function BarPlot({data, options}){
-
     const getPlot = () => {
         let tickFormatter = getDataFormater(options.display_mode);
         let stacked = getOptionIfExists(options.stacked);
@@ -18,25 +16,18 @@ export function BarPlot({data, options}){
         let grid = handleGridOptions(options.grid, options.grid_stroke, options.grid_vertical, options.grid_horizontal, options.grid_opacity);
         let legend = handleLegendOptions(options.legend, options.legend_align, options.legend_pos, 'horizontal');
         
-
         let labelList = null;
         if(options.labelList) 
             labelList = <LabelList formatter={tickFormatter} offset={options.labelList_offset} angle={options.labelList_angle} position={options.labelList_position}/>
 
-        if(grouped){/*
-            return (
-                <ResponsiveContainer width="100%" height={options.height}>
-                    <ComposedChart data={data.data} margin={margin}>
+        if(grouped){
 
-                    </ComposedChart>
-                </ResponsiveContainer>
-            )
-        */} else {
+        } else {
             let plots = [];
             for(let i=0; i<data.header.value.length; i++){
                 plots.push(
                     <ResponsiveContainer key={data.header.value[i]} width="100%" height={options.height}>
-                        <BarChart data={data.data} margin={margin}>
+                        <BarChart layout={axesArray[2]} data={data.data} margin={margin}>
                             {axesArray[0]}
                             {axesArray[1]}
                             {grid}
@@ -51,8 +42,6 @@ export function BarPlot({data, options}){
             }
             return plots;
         }
-        
-
     }
 
     return(
@@ -61,5 +50,3 @@ export function BarPlot({data, options}){
         </React.Fragment>
     )
 }
-
-// {getPlot()}

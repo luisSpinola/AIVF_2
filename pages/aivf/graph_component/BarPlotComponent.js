@@ -51,7 +51,7 @@ export default function BarPlotComponent({id, data}) {
 
     return(
         <React.Fragment>
-           {getGraphComponent(needAdapt, <BarPlot data={data} options={options}/>)}
+            {getGraphComponent(needAdapt, <BarPlot data={data} options={options}/>)}
         </React.Fragment>
     )
 }

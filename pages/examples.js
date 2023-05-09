@@ -4,7 +4,7 @@ export const example_one_numerical_1 = {
         id: ["Country"], 
         value: ["GW"],
         preferences: [{
-            height: 450
+            height: 250
         }]
     },
     data: [
