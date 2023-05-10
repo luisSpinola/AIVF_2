@@ -1,19 +1,14 @@
-//  MUI
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import React from "react";
+import { OPTIONS_HEIGHT, OPTIONS_SECTION_GENERAL } from "../../../../localization/ptPt";
 import { sliderInput } from "../components/inputs";
+import { getSectionStructure } from "../components/sectionStructure";
 
 export const getGeneralOptions = (options, setOptions) => {
-    return (
-        <Accordion disableGutters>
-            <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                General
-            </AccordionSummary>
-            <AccordionDetails>
-                {sliderInput("Altura", options.height, setOptions, {min: 100, max: 1500, step:50})}
-            </AccordionDetails>
-        </Accordion>
+    let details = (
+        <React.Fragment>
+            {sliderInput(OPTIONS_HEIGHT, "height", options, setOptions, {min: 100, max: 1500, step:50})}
+        </React.Fragment>
     )
+
+    return getSectionStructure(OPTIONS_SECTION_GENERAL, details, null);
 }

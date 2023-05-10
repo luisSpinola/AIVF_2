@@ -8,6 +8,7 @@ import { handleSidebarOptions } from "../utils/shared/options/options";
 import { getGeneralOptions } from "../utils/shared/options/sections/plot/General";
 //  PLOTS
 import { BarPlot } from "../libraries/recharts/BarPlot";
+import { getGridOptions } from "../utils/shared/options/sections/plot/grid";
 
 
 export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
@@ -55,6 +56,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
     const sidebarOptions = () => {
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions)}
+            {getGridOptions(options, setOptions)}
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
     }

@@ -18,10 +18,11 @@ export const handleSidebarOptions = (optionsFlag, sections, plotsInfo) => {
 
 export const getPlotsSelection = (plotsInfo) => {
     return (
-        <div style={{minWidth:"16rem"}}>
+        <div style={{minWidth:"14rem", margin:'1rem'}}>
             <FormControl size="small" fullWidth variant="filled">
-                <InputLabel >{PLOT_SELECTION}</InputLabel>
-                <Select sx={{fontSize:'0.9rem'}} value={plotsInfo[1]} onChange={(e) => plotsInfo[2](e.target.value)}>
+                <InputLabel id="demo-simple-select-standard-label">{PLOT_SELECTION}</InputLabel>
+                <Select labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard" sx={{fontSize:'0.9rem'}} value={plotsInfo[1]} onChange={(e) => plotsInfo[2](e.target.value)}>
                     {plotsInfo[0].map((elem, index) => {
                         return (
                             <MenuItem sx={{fontSize:'0.9rem'}} key={index} value={index}>

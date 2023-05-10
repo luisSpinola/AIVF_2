@@ -25,4 +25,4 @@ export const VALUE_GRID_VERTICAL = true;
 export const VALUE_GRID_STROKE = false;
 export const VALUE_GRID_OPACITY = 50;
 //  COLOR
-export const VALUE_COLOR = ["#fd7f6f", "#7eb0d5", "#b2e061", "#bd7ebe", "#ffb55a", "#ffee65", "#beb9db", "#fdcce5", "#8bd3c7"];
+export const VALUE_COLOR = ["#1976d2", "#7eb0d5", "#b2e061", "#bd7ebe", "#ffb55a", "#ffee65", "#beb9db", "#fdcce5", "#8bd3c7"];
