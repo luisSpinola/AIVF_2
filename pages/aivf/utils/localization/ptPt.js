@@ -3,6 +3,7 @@ export const ERROR_TYPE_NOT_FOUND = "Ocorreu um erro ao gerar este gráfico (TYP
 export const ERROR_GRAPH_NOT_FOUND = "Ocorreu um erro ao gerar este gráfico (GRAPH_NOT_FOUND)";
 
 //PLOTS
+export const PLOT_SELECTION = "Gráfico";
 export const BAR_PLOT = "Barras";
 export const PIE_CHART = "Setores";
 

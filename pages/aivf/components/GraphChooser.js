@@ -17,7 +17,7 @@ export default function GraphChooser({identifier, data, options}) {
 
         switch(data.header.type){
             case "one_numerical":
-                return <OneNumerical data={data} graphSelected={selected}/>;
+                return <OneNumerical optionsFlag={options} data={data} graphSelected={selected}/>;
             default:
                 return <React.Fragment>{ERROR_TYPE_NOT_FOUND}</React.Fragment>;
         }

@@ -12,7 +12,7 @@ export function BarPlot({data, options}){
         let stacked = getOptionIfExists(options.stacked);
         let grouped = getOptionIfExists(options.grouped);
         let margin = {top:options.margin_top, right:options.margin_right, left:options.margin_left, bottom:options.margin_bottom};
-        let axesArray = handleAxes(options.invert_axes, options.yTick, options.simplify, options.scale, data.header.id[0], false);
+        let axesArray = handleAxes(options.invert_axes, options.yTick, options.scale, data.header.id[0], false);
         let grid = handleGridOptions(options.grid, options.grid_stroke, options.grid_vertical, options.grid_horizontal, options.grid_opacity);
         let legend = handleLegendOptions(options.legend, options.legend_align, options.legend_pos, 'horizontal');
         

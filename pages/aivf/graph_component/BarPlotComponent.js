@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 //  STRINGS
-import { VALUE_COLOR, VALUE_GRID, VALUE_GRID_HORIZONTAL, VALUE_GRID_OPACITY, VALUE_GRID_STROKE, VALUE_GRID_VERTICAL, VALUE_HEIGHT, VALUE_INVERT_AXES, VALUE_LABELLIST, VALUE_LABELLIST_ANGLE, VALUE_LABELLIST_OFFSET, VALUE_LABELLIST_POSITION, VALUE_LEGEND, VALUE_LEGEND_ALIGN, VALUE_LEGEND_POS, VALUE_MARGIN_BOTTTOM, VALUE_MARGIN_LEFT, VALUE_MARGIN_RIGHT, VALUE_MARGIN_TOP } from "../utils/default/defaults";
+import { VALUE_COLOR, VALUE_DISPLAY_MODE, VALUE_GRID, VALUE_GRID_HORIZONTAL, VALUE_GRID_OPACITY, VALUE_GRID_STROKE, VALUE_GRID_VERTICAL, VALUE_HEIGHT, VALUE_INVERT_AXES, VALUE_LABELLIST, VALUE_LABELLIST_ANGLE, VALUE_LABELLIST_OFFSET, VALUE_LABELLIST_POSITION, VALUE_LEGEND, VALUE_LEGEND_ALIGN, VALUE_LEGEND_POS, VALUE_MARGIN_BOTTTOM, VALUE_MARGIN_LEFT, VALUE_MARGIN_RIGHT, VALUE_MARGIN_TOP, VALUE_Y_SCALE, VALUE_Y_TICK } from "../utils/default/defaults";
 //  SHARED
 import { getGraphComponent, setPreferences } from "../utils/shared/functions";
+import { handleSidebarOptions } from "../utils/shared/options/options";
+//  OPTION SECTIONS
+import { getGeneralOptions } from "../utils/shared/options/sections/plot/General";
 //  PLOTS
 import { BarPlot } from "../libraries/recharts/BarPlot";
 
-export default function BarPlotComponent({id, data}) {
+
+export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -32,15 +36,14 @@ export default function BarPlotComponent({id, data}) {
         grid_opacity: VALUE_GRID_OPACITY,
         grid_stroke: VALUE_GRID_STROKE,
         //  Y
-        yTick: 4,
-        simplify: false,
-        scale: 0,
+        yTick: VALUE_Y_TICK,
+        scale: VALUE_Y_SCALE,
         //  COLOR
         colors: VALUE_COLOR,
         colors_lock: true,
 
-        invert_axes: false,
-        display_mode: "default", // default, currency, percentage
+        invert_axes: VALUE_INVERT_AXES,
+        display_mode: VALUE_DISPLAY_MODE, // default, currency, percentage
     })
 
     const[needAdapt, setNeedAdapt] = useState(false);
@@ -49,9 +52,17 @@ export default function BarPlotComponent({id, data}) {
         setPreferences(id, data.header, options, setOptions);
     },[])
 
+    const sidebarOptions = () => {
+        let sections = <React.Fragment>
+            {getGeneralOptions(options, setOptions)}
+        </React.Fragment>
+        return handleSidebarOptions(optionsFlag, sections, plotsInfo);
+    }
+    
     return(
         <React.Fragment>
             {getGraphComponent(needAdapt, <BarPlot data={data} options={options}/>)}
+            {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )
 }

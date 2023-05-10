@@ -3,7 +3,7 @@
     flex-wrap: wrap;
 }
 .custom-card {
-    min-width: 20rem;
+    min-width: 40rem;
     box-shadow: 0 0 0 1px rgba(0,0,0,.1);
     border-radius: 4px;
     padding-top: 2rem;

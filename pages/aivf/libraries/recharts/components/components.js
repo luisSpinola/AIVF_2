@@ -1,13 +1,10 @@
 import { XAxis, YAxis, CartesianGrid, Legend } from "recharts";
 
 
-export const handleAxes = (inverted, yTick, simplify, scale, dataKey, reversed) => {
+export const handleAxes = (inverted, yTick, scale, dataKey, reversed) => {
     let tickFormatters;
-    (simplify) ? tickFormatters = DataFormater : tickFormatters = undefined;
-
     let orientation;
     (reversed) ? orientation = 'right' : orientation = 'left';
-
     let axisScale = 'auto';
     if(scale === 1) axisScale = 'log';
 
