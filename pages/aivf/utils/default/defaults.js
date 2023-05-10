@@ -16,8 +16,8 @@ export const VALUE_LABELLIST_OFFSET = 5;
 export const VALUE_LABELLIST_ANGLE = 0;
 //  LEGEND
 export const VALUE_LEGEND = true;
-export const VALUE_LEGEND_POS = 'bottom';
-export const VALUE_LEGEND_ALIGN = 'center';
+export const VALUE_LEGEND_POS = 'top';
+export const VALUE_LEGEND_ALIGN = 'right';
 //  GRID
 export const VALUE_GRID = true;
 export const VALUE_GRID_HORIZONTAL = true;

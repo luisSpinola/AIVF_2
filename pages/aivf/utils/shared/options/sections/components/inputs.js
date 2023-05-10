@@ -3,8 +3,11 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import Input from '@mui/material/Input';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 import Switch from "@mui/material/Switch";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 const SLIDER_SIZE = "150px";
 const INPUT_SIZE = "55px";
@@ -47,6 +50,20 @@ export const switchInput = (label, option, options, setOptions, disable) => {
                 <Switch disabled={disable} size="small" checked={options[option]} onChange={(e) => updateOptions(option, e.target.checked, options, setOptions)}/>
             </div>
         </div>  
+    )
+}
+
+export const selectInput = (label, option, options, setOptions, disable, items) => {
+    return (
+        <FormControl fullWidth variant="filled" size="small">
+            <InputLabel>{label}</InputLabel>
+            <Select disabled={disable} className="MuiSelect-select-MuiInputBase-input-MuiInput-input"  
+                value={options[option]} onChange={(e) => updateOptions(option, e.target.value, options, setOptions)}> 
+                {items.map((elem) => {
+                    return <MenuItem key={elem.value} dense={true} className="MuiButtonBase-root-MuiMenuItem-root" value={elem.value}>{elem.name}</MenuItem>
+                })}
+            </Select>
+        </FormControl>
     )
 }
 

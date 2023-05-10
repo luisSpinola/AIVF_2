@@ -9,6 +9,5 @@ export const getGeneralOptions = (options, setOptions) => {
             {sliderInput(OPTIONS_HEIGHT, "height", options, setOptions, {min: 100, max: 1500, step:50})}
         </React.Fragment>
     )
-
     return getSectionStructure(OPTIONS_SECTION_GENERAL, details, null);
 }

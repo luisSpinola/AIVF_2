@@ -18,8 +18,7 @@ export function BarPlot({data, options}){
         
         let labelList = null;
         if(options.labelList) 
-            labelList = <LabelList formatter={tickFormatter} offset={options.labelList_offset} angle={options.labelList_angle} position={options.labelList_position}/>
-
+            labelList = <LabelList formatter={tickFormatter} offset={options.labelList_offset} angle={options.labelList_angle} position={options.labelList_pos}/>
         if(grouped){
 
         } else {

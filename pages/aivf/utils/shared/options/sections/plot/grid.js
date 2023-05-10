@@ -5,7 +5,7 @@ import { getSectionStructure } from "../components/sectionStructure";
 
 //  MUI
 import Switch from "@mui/material/Switch";
-import { Divider } from "@mui/material";
+import Divider from "@mui/material/Divider";
 
 export const getGridOptions = (options, setOptions) => {
     let switchComponent = <Switch size="small" checked={options.grid} onChange={(e) => updateOptions("grid", e.target.checked, options, setOptions)} onClick={(event) => event.stopPropagation()} onFocus={(event) => event.stopPropagation()}/>
@@ -22,6 +22,5 @@ export const getGridOptions = (options, setOptions) => {
             {sliderInput(OPTIONS_GRID_OPACITY, "grid_opacity", options, setOptions, {min: 0, max: 100, step:1}, disable)}
         </React.Fragment>
     )
-
     return getSectionStructure(OPTIONS_SECTION_GRID, details, switchComponent);
 }

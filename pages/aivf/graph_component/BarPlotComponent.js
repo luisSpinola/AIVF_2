@@ -5,10 +5,15 @@ import { VALUE_COLOR, VALUE_DISPLAY_MODE, VALUE_GRID, VALUE_GRID_HORIZONTAL, VAL
 import { getGraphComponent, setPreferences } from "../utils/shared/functions";
 import { handleSidebarOptions } from "../utils/shared/options/options";
 //  OPTION SECTIONS
-import { getGeneralOptions } from "../utils/shared/options/sections/plot/General";
+import { getGeneralOptions } from "../utils/shared/options/sections/plot/general";
+import { getGridOptions } from "../utils/shared/options/sections/plot/grid";
+import { getMarginOptions } from "../utils/shared/options/sections/plot/margin";
+import { getAxesOptions } from "../utils/shared/options/sections/plot/axes";
 //  PLOTS
 import { BarPlot } from "../libraries/recharts/BarPlot";
-import { getGridOptions } from "../utils/shared/options/sections/plot/grid";
+import { getLabelListOptions } from "../utils/shared/options/sections/plot/labelList";
+import { getLegendOptions } from "../utils/shared/options/sections/plot/legend";
+
 
 
 export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
@@ -23,7 +28,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
         margin_right: VALUE_MARGIN_RIGHT,
         //  Label List
         labelList: VALUE_LABELLIST,
-        labelList_position: VALUE_LABELLIST_POSITION,
+        labelList_pos: VALUE_LABELLIST_POSITION,
         labelList_offset: VALUE_LABELLIST_OFFSET,
         labelList_angle: VALUE_LABELLIST_ANGLE,
         //  Legend
@@ -56,7 +61,11 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
     const sidebarOptions = () => {
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions)}
+            {getAxesOptions(options, setOptions,{invert:true})}
+            {getLabelListOptions(options, setOptions)}
+            {getLegendOptions(options, setOptions)}
             {getGridOptions(options, setOptions)}
+            {getMarginOptions(options, setOptions)}
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
     }
