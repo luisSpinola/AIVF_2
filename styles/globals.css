@@ -4,11 +4,8 @@
 }
 .custom-card {
     min-width: 40rem;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
-    border-radius: 4px;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
     padding-right: 2rem;
+    padding-bottom: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
 }

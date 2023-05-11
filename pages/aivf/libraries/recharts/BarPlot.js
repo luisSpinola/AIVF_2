@@ -31,7 +31,7 @@ export function BarPlot({data, options}){
                             {axesArray[1]}
                             {grid}
                             {legend}
-                            <Tooltip formatter={tickFormatter}/>
+                            <Tooltip formatter={tickFormatter} isAnimationActive={false}/>
                             <Bar yAxisId="left" dataKey={data.header.value[i]} fill={options.colors[i]} fillOpacity={options.colors_opacity/100}>
                                 {labelList} 
                             </Bar>

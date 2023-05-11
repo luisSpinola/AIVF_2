@@ -1,16 +1,31 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import GraphChooser from "../aivf/components/GraphChooser";
 
-export default function GraphCard({identifier, graphData}){
+//  MUI
+import IconButton from "@mui/material/IconButton";
+import SettingsIcon from '@mui/icons-material/Settings';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+
+export default function GraphCard({identifier, graphData, title}){
     const [options, setOptions] = useState(false);
+    const [showIcons, setShowIcons] = useState(false);
     return (
-        <div className="custom-card">
-            <div className="custom-card-header">
-                <button onClick={() => setOptions(!options)}>Options</button>
-            </div>
+        <Card className="custom-card" onContextMenu={(e)=> e.preventDefault()}>
+            <CardHeader onMouseEnter={() => setShowIcons(true)} onMouseLeave={() => setShowIcons(false)} 
+                title={<Typography sx={{fontWeight:'bold'}} variant='body2'>{title}</Typography>} className="custom-card-header" action={
+                <React.Fragment>
+                    { showIcons && 
+                        <IconButton sx={{marginRight:'-1.5rem'}} size="small" onClick={() => setOptions(!options)}>
+                            <SettingsIcon fontSize="0.8rem"/>
+                        </IconButton>
+                    }
+                </React.Fragment>
+            }/>
             <div className="custom-card-body">
                 <GraphChooser data={graphData} options={[options, setOptions]}/>
             </div>
-        </div>
+        </Card>
     )
 }

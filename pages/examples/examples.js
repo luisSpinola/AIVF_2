@@ -13,7 +13,7 @@ export const example_one_numerical_1 = {
             "GW": 281.5
         },
         { 
-            "Country": "United States",
+            "Country": "USA",
             "GW": 127.0
         },
         { 
@@ -29,7 +29,7 @@ export const example_one_numerical_1 = {
             "GW": 27.3
         },
         { 
-            "Country": "United Kingdom",
+            "Country": "UK",
             "GW": 24.2
         },
         { 
