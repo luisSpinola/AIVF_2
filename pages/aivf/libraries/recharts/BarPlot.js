@@ -6,7 +6,7 @@ import { handleAxes, handleGridOptions, handleLegendOptions } from "./components
 import { getDataFormater } from "../../utils/shared/dataFormatters";
 import { getOptionIfExists } from "../../utils/shared/functions";
 
-export function BarPlot({data, options}){
+export default function BarPlot({data, options}){
     const getPlot = () => {
         let tickFormatter = getDataFormater(options.display_mode);
         let stacked = getOptionIfExists(options.stacked);
@@ -15,7 +15,6 @@ export function BarPlot({data, options}){
         let axesArray = handleAxes(options.invert_axes, options.yTick, options.scale, data.header.id[0], false);
         let grid = handleGridOptions(options.grid, options.grid_stroke, options.grid_vertical, options.grid_horizontal, options.grid_opacity);
         let legend = handleLegendOptions(options.legend, options.legend_align, options.legend_pos, 'horizontal');
-        
         let labelList = null;
         if(options.labelList) 
             labelList = <LabelList formatter={tickFormatter} offset={options.labelList_offset} angle={options.labelList_angle} position={options.labelList_pos}/>

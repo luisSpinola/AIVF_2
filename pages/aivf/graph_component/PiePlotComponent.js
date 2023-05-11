@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from "react";
 //  STRINGS
-import { VALUE_COLOR, VALUE_DISPLAY_MODE, VALUE_GRID, VALUE_GRID_HORIZONTAL, VALUE_GRID_OPACITY, VALUE_GRID_STROKE, VALUE_GRID_VERTICAL, VALUE_HEIGHT, VALUE_INVERT_AXES, VALUE_LABELLIST, VALUE_LABELLIST_ANGLE, VALUE_LABELLIST_OFFSET, VALUE_LABELLIST_POSITION, VALUE_LEGEND, VALUE_LEGEND_ALIGN, VALUE_LEGEND_POS, VALUE_MARGIN_BOTTTOM, VALUE_MARGIN_LEFT, VALUE_MARGIN_RIGHT, VALUE_MARGIN_TOP, VALUE_Y_SCALE, VALUE_Y_TICK } from "../utils/default/defaults";
+import { VALUE_COLOR, VALUE_DISPLAY_MODE, VALUE_HEIGHT, VALUE_INVERT_AXES, VALUE_LABELLIST, VALUE_LABELLIST_ANGLE, VALUE_LABELLIST_OFFSET, VALUE_LABELLIST_POSITION, VALUE_LEGEND, VALUE_LEGEND_ALIGN, VALUE_LEGEND_POS, VALUE_MARGIN_BOTTTOM, VALUE_MARGIN_LEFT, VALUE_MARGIN_RIGHT, VALUE_MARGIN_TOP } from "../utils/default/defaults";
 //  SHARED
 import { getGraphComponent, setPreferences } from "../utils/shared/functions";
 import { handleSidebarOptions } from "../utils/shared/options/options";
 //  OPTION SECTIONS
 import { getGeneralOptions } from "../utils/shared/options/sections/plot/general";
-import { getGridOptions } from "../utils/shared/options/sections/plot/grid";
 import { getMarginOptions } from "../utils/shared/options/sections/plot/margin";
-import { getAxesOptions } from "../utils/shared/options/sections/plot/axes";
-import { getLabelListOptions } from "../utils/shared/options/sections/plot/labelList";
 import { getLegendOptions } from "../utils/shared/options/sections/plot/legend";
 import ColorSelector from "../utils/shared/options/sections/plot/ColorSelector";
 //  PLOTS
-import BarPlot from "../libraries/recharts/BarPlot";
+import PiePlot from "../libraries/recharts/PiePlot";
+import { getPieLabelListOptions } from "../utils/shared/options/sections/plot/pie/pieLabelList";
+import { getRadiusOptions } from "../utils/shared/options/sections/plot/pie/radius";
 
-export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
+export default function PiePlotComponent({id, data, optionsFlag, plotsInfo}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
         invert_axes: VALUE_INVERT_AXES,
+        //  Radius
+        radius_auto: true,
+        radius_inner: 0,
+        radius_outer: 100,
+        radius_spacing: 0,
         //  Margin
         margin_top: VALUE_MARGIN_TOP,
         margin_bottom: VALUE_MARGIN_BOTTTOM,
@@ -27,28 +31,20 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
         margin_right: VALUE_MARGIN_RIGHT,
         //  Label List
         labelList: VALUE_LABELLIST,
-        labelList_pos: VALUE_LABELLIST_POSITION,
-        labelList_offset: VALUE_LABELLIST_OFFSET,
-        labelList_angle: VALUE_LABELLIST_ANGLE,
+        labelList_mode: 1,
+        labelList_line: false,
+        labelList_percent: false,
+        labelList_color: ["#000000"],
         //  Legend
         legend: VALUE_LEGEND,
         legend_pos: VALUE_LEGEND_POS,
-        legend_align: VALUE_LEGEND_ALIGN,
-        //  Grid
-        grid: VALUE_GRID,
-        grid_horizontal: VALUE_GRID_HORIZONTAL,
-        grid_vertical: VALUE_GRID_VERTICAL,
-        grid_opacity: VALUE_GRID_OPACITY,
-        grid_stroke: VALUE_GRID_STROKE,
-        //  Y
-        yTick: VALUE_Y_TICK,
-        scale: VALUE_Y_SCALE,
+        legend_align: 'center',
+        legend_direction: 'horizontal',
         //  COLOR
         colors: VALUE_COLOR,
         colors_opacity: 100,
         colors_lock: true,
 
-        invert_axes: VALUE_INVERT_AXES,
         display_mode: VALUE_DISPLAY_MODE, // default, currency, percentage
     })
 
@@ -61,19 +57,18 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
     const sidebarOptions = () => {
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions)}
-            {getAxesOptions(options, setOptions, {invert:true})}
-            {getLabelListOptions(options, setOptions)}
+            {getPieLabelListOptions(options, setOptions)}
             {getLegendOptions(options, setOptions)}
-            {getGridOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
-            <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.header.value.length} opacity={true} section={true}/>
+            {getRadiusOptions(options, setOptions)}
+            <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.data.length} opacity={false} section={true}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
     }
     
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt, <BarPlot data={data} options={options}/>)}
+            {getGraphComponent(needAdapt, <PiePlot data={data} options={options}/>)}
             {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )

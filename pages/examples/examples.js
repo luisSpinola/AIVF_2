@@ -3,9 +3,7 @@ export const example_one_numerical_1 = {
         type:'one_numerical',
         id: ["Country"], 
         value: ["GW"],
-        preferences: [{
-            height: 250
-        }]
+        preferences: [{height: 250},{height: 250}]
     },
     data: [
         { 
@@ -35,6 +33,6 @@ export const example_one_numerical_1 = {
         { 
             "Country": "Brazil",
             "GW": 17.4
-        }
+        },
     ]
 }

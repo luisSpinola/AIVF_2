@@ -10,7 +10,7 @@ import reactCSS from 'reactcss';
 //  MUI
 import Divider from "@mui/material/Divider";
 
-export default function ColorSelector({options, setOptions, size}){
+export default function ColorSelector({option, options, setOptions, size, opacity, section}){
     const [displayColorPicker, setDisplayColorPicker] = useState(Array(size).fill(false));
 
     const colorStyles = (colors, size) => {
@@ -31,27 +31,27 @@ export default function ColorSelector({options, setOptions, size}){
     const colorsDisplayFunc = (styles) => {
         let colors = [];
         for(let i=0; i<styles.length; i++){
-            colors.push(<span key={i}>
+            colors.push(<span key={section + i}>
                 <div style={{...styles[i].swatch, minWidth:'36px'}} onClick={() => handleColorClick(i)}>
                     <div style={styles[i].color} />
                 </div>
                 { 
                     displayColorPicker[i] ? 
-                        <div  style={styles[i].popover}>
+                        <div style={styles[i].popover}>
                             <div style={ styles[i].cover } onClick={() => handleColorClick(i)}/>
-                            <SketchPicker disableAlpha={true} color={ options.colors[i] } onChange={(color) => handleChange(color, i)}/>
+                            <SketchPicker disableAlpha={true} color={ options[option][i] } onChange={(color) => handleChange(color, i)}/>
                         </div> 
                     : null 
                 }
             </span>)
         }
-        return <div style={{maxWidth: '15rem'}}>{colors}</div>;
+        return <div style={{maxWidth: '12rem'}}>{colors}</div>;
     }
 
     const handleChange = (color, i) => {
-        let new_colors = [...options.colors];
+        let new_colors = [...options[option]];
         new_colors[i] = color.hex;
-        updateOptions("colors", new_colors, options, setOptions);
+        updateOptions(option, new_colors, options, setOptions);
     }
 
     const handleColorClick = (i) => {
@@ -60,18 +60,28 @@ export default function ColorSelector({options, setOptions, size}){
         setDisplayColorPicker(temp_displayColorPicker);
     }
 
+    const getColorsDisplay = () => {
+        let styles = colorStyles(options[option], size);
+        return colorsDisplayFunc(styles);
+    }
+
     const getDetails = () => {
-        let styles = colorStyles(options.colors, size);
-        let colorsDisplay = colorsDisplayFunc(styles);
+        let colorsDisplay = getColorsDisplay();
         return <React.Fragment>
             {colorsDisplay}
-            <Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>
-            {sliderInput(OPTIONS_COLOR_OPACITY, "colors_opacity", options, setOptions, {min: 0, max: 100, step:1})}
+            
+            {opacity && 
+                <React.Fragment>
+                    <Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>
+                    {sliderInput(OPTIONS_COLOR_OPACITY, "colors_opacity", options, setOptions, {min: 0, max: 100, step:1})}
+                </React.Fragment>
+            }
         </React.Fragment>
     } 
     return (
         <React.Fragment>
-            {getSectionStructure(OPTIONS_SECTION_COLOR, getDetails(), null)}
+            {section && getSectionStructure(OPTIONS_SECTION_COLOR, getDetails(), null)}
+            {!section && getColorsDisplay()}
         </React.Fragment>
     );
 }

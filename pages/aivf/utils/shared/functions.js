@@ -2,7 +2,7 @@ import { ADAPT_LOADING } from "../localization/ptPt";
 
 export const setPreferences = (id, header, options, setOptions) => {
     if(header.preferences){
-        if(header.preferences[id] !== null){
+        if(header.preferences[id]){
             let new_options = {...options};
             Object.entries(header.preferences[id]).map(([key,value],i) => { 
                 new_options[key] = value; 
