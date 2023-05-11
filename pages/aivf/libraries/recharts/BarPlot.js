@@ -32,7 +32,7 @@ export function BarPlot({data, options}){
                             {grid}
                             {legend}
                             <Tooltip formatter={tickFormatter}/>
-                            <Bar yAxisId="left" dataKey={data.header.value[i]} fill={options.colors[i]}>
+                            <Bar yAxisId="left" dataKey={data.header.value[i]} fill={options.colors[i]} fillOpacity={options.colors_opacity/100}>
                                 {labelList} 
                             </Bar>
                         </BarChart>

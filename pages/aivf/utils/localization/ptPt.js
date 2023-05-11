@@ -44,5 +44,7 @@ export const OPTIONS_LEGEND_POS = "Posição";
 export const OPTIONS_LEGEND_DIR = "Direção";
 export const OPTIONS_LEGEND_ALIGN = "Alinhamento";
 
+export const OPTIONS_SECTION_COLOR = "Cor";
+export const OPTIONS_COLOR_OPACITY = "Opacidade";
 //  ADAPT
 export const ADAPT_LOADING = "A adaptar";

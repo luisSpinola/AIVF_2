@@ -9,12 +9,11 @@ import { getGeneralOptions } from "../utils/shared/options/sections/plot/general
 import { getGridOptions } from "../utils/shared/options/sections/plot/grid";
 import { getMarginOptions } from "../utils/shared/options/sections/plot/margin";
 import { getAxesOptions } from "../utils/shared/options/sections/plot/axes";
-//  PLOTS
-import { BarPlot } from "../libraries/recharts/BarPlot";
 import { getLabelListOptions } from "../utils/shared/options/sections/plot/labelList";
 import { getLegendOptions } from "../utils/shared/options/sections/plot/legend";
-
-
+import ColorSelector from "../utils/shared/options/sections/plot/ColorSelector";
+//  PLOTS
+import { BarPlot } from "../libraries/recharts/BarPlot";
 
 export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
     const [options, setOptions] = useState({
@@ -46,6 +45,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
         scale: VALUE_Y_SCALE,
         //  COLOR
         colors: VALUE_COLOR,
+        colors_opacity: 100,
         colors_lock: true,
 
         invert_axes: VALUE_INVERT_AXES,
@@ -61,11 +61,12 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
     const sidebarOptions = () => {
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions)}
-            {getAxesOptions(options, setOptions,{invert:true})}
+            {getAxesOptions(options, setOptions, {invert:true})}
             {getLabelListOptions(options, setOptions)}
             {getLegendOptions(options, setOptions)}
             {getGridOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
+            <ColorSelector options={options} setOptions={setOptions} size={data.header.value.length}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
     }
