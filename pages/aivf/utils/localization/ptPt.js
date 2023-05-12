@@ -2,6 +2,9 @@
 export const ERROR_TYPE_NOT_FOUND = "Ocorreu um erro ao gerar este gráfico (TYPE_NOT_FOUND)";
 export const ERROR_GRAPH_NOT_FOUND = "Ocorreu um erro ao gerar este gráfico (GRAPH_NOT_FOUND)";
 
+//
+export const SAVE_TOOLTIP = "Guardar Alterações";
+
 //  PLOTS
 export const PLOT_SELECTION = "Gráfico";
 export const BAR_PLOT = "Barras";

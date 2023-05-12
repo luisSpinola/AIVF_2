@@ -17,14 +17,16 @@ export default function GraphChooser({identifier, data, options}) {
 
         switch(data.header.type){
             case "one_numerical":
-                return <OneNumerical optionsFlag={options} data={data} graphSelected={selected}/>;
+                return <OneNumerical optionsFlag={options} data={data} graphSelected={selected} watchOptions={watchOptions}/>;
             default:
                 return <React.Fragment>{ERROR_TYPE_NOT_FOUND}</React.Fragment>;
         }
     }
 
-    const watchOptions = () => {
+    const watchOptions = (options, selected) => {
         // TODO
+        console.log("Should Save");
+        setTimeout(() => {return true}, 2000)
     }
     const getOptions = () => {
         // TODO

@@ -20,12 +20,12 @@ export default function PiePlotComponent({id, data, optionsFlag, plotsInfo}) {
         height: VALUE_HEIGHT,
         invert_axes: VALUE_INVERT_AXES,
         //  Radius
-        radius_auto: true,
-        radius_inner: 0,
+        radius_auto: false,
+        radius_inner: 55,
         radius_outer: 100,
         radius_spacing: 0,
         //  Margin
-        margin_top: VALUE_MARGIN_TOP,
+        margin_top: 0,
         margin_bottom: VALUE_MARGIN_BOTTTOM,
         margin_left: VALUE_MARGIN_LEFT,
         margin_right: VALUE_MARGIN_RIGHT,

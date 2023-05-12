@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { VALUE_COLOR, VALUE_DISPLAY_MODE, VALUE_GRID, VALUE_GRID_HORIZONTAL, VALUE_GRID_OPACITY, VALUE_GRID_STROKE, VALUE_GRID_VERTICAL, VALUE_HEIGHT, VALUE_INVERT_AXES, VALUE_LABELLIST, VALUE_LABELLIST_ANGLE, VALUE_LABELLIST_OFFSET, VALUE_LABELLIST_POSITION, VALUE_LEGEND, VALUE_LEGEND_ALIGN, VALUE_LEGEND_POS, VALUE_MARGIN_BOTTTOM, VALUE_MARGIN_LEFT, VALUE_MARGIN_RIGHT, VALUE_MARGIN_TOP, VALUE_Y_SCALE, VALUE_Y_TICK } from "../utils/default/defaults";
 //  SHARED
 import { getGraphComponent, setPreferences } from "../utils/shared/functions";
-import { handleSidebarOptions } from "../utils/shared/options/options";
+import { SaveButton, handleSidebarOptions } from "../utils/shared/options/options";
 //  OPTION SECTIONS
 import { getGeneralOptions } from "../utils/shared/options/sections/plot/general";
 import { getGridOptions } from "../utils/shared/options/sections/plot/grid";
@@ -15,7 +15,7 @@ import ColorSelector from "../utils/shared/options/sections/plot/ColorSelector";
 //  PLOTS
 import BarPlot from "../libraries/recharts/BarPlot";
 
-export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
+export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, watchOptions}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -58,6 +58,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
         setPreferences(id, data.header, options, setOptions);
     },[])
 
+
     const sidebarOptions = () => {
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions)}
@@ -67,6 +68,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo}) {
             {getGridOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
             <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.header.value.length} opacity={true} section={true}/>
+            <SaveButton id={id} options={options} watchOptions={watchOptions}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
     }

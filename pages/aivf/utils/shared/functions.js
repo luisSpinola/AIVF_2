@@ -24,3 +24,4 @@ export const getOptionIfExists = (value) => {
     if(value !== undefined) return value;
     return false;
 }
+
