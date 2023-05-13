@@ -51,6 +51,7 @@ export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, iden
     const[needAdapt, setNeedAdapt] = useState(false);
 
     useEffect(() => {
+        console.log(previousOptions);
         setPreferences(id, data.header, options, setOptions);
         if(previousOptions !== null) setOptions(previousOptions);
     },[])

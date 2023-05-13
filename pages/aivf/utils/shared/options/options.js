@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 //  STRINGS
 import { PLOT_SELECTION } from "../../localization/ptPt";
-import { SAVE_MODE } from "../../default/defaults";
+import { SAVE_CACHE_NAME } from "../../default/defaults";
 
 export const handleSidebarOptions = (optionsFlag, sections, plotsInfo) => {
     return (
@@ -36,4 +36,46 @@ export const getPlotsSelection = (plotsInfo) => {
             </FormControl>
         </div>
     )
+}
+
+
+export const getCachedOptions = async (setPreviousOptions, setSelected, setIsOptionsLoaded, identifier, selected) => {
+    if (typeof caches === 'undefined') return;
+    const cacheStorage = await caches.open(SAVE_CACHE_NAME);
+    const cachedResponse = await cacheStorage.match(SAVE_CACHE_NAME);
+    return cachedResponse.json().then((item) => {
+        let found = false;
+        for(let i=0; i<item.length; i++){
+            if(item[i].id === identifier[0]){
+                for(let j=0; j<item[i].pages.length; j++){
+                    if(item[i].pages[j].page_id === identifier[1]){
+                        for(let y=0; y<item[i].pages[j].plotsCollection.length; y++){
+                            if(item[i].pages[j].plotsCollection[y].plot_collection_id === identifier[2]){
+                                if(setSelected !== null){
+                                    setSelected(item[i].pages[j].plotsCollection[y].selected);
+                                }
+                                for(let x=0; x<item[i].pages[j].plotsCollection[y].plot.length; x++){
+
+                                    let comparedSelected = item[i].pages[j].plotsCollection[y].selected;
+                                    if(setSelected === null) comparedSelected = selected;
+
+                                    if(item[i].pages[j].plotsCollection[y].plot[x].plot_id === comparedSelected){
+                                        found = true;
+                                        setPreviousOptions(item[i].pages[j].plotsCollection[y].plot[x].options);
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(!found) {
+            setPreviousOptions(null);
+        };
+
+        setIsOptionsLoaded(true);
+        
+    })
 }

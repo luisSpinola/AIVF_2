@@ -18,7 +18,6 @@ export default function Main() {
         <ThemeProvider theme={theme}>
             <div className="custom-flex-container">
                 <GraphCard graphData={example_one_numerical_1} title={"Exemplo 1"} identifier={[...identifierStart, 1]}/>
-                <GraphCard graphData={example_one_numerical_1} title={"Exemplo 2"} identifier={[...identifierStart, 2]}/>
             </div>
         </ThemeProvider>
     );
