@@ -66,6 +66,7 @@ export default function SaveButton({id, options, identifier, plotsInfo}){
         }
     }
 
+    // TODO - improve function structure
     const getCacheValue = async (reset) => {
         if (typeof caches === 'undefined') return false;
         const cacheStorage = await caches.open(SAVE_CACHE_NAME);

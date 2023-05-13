@@ -12,6 +12,7 @@ export default function GraphChooser({identifier, data, options}) {
     const [isOptionsLoaded, setIsOptionsLoaded] = useState(false);
     const [previousOptions, setPreviousOptions] = useState(null);
     const [selected, setSelected] = useState(null);
+    const [started, setStarted] = useState(false);
 
     useEffect(() => {
         if(selected === "-1"){} 
@@ -25,6 +26,10 @@ export default function GraphChooser({identifier, data, options}) {
                             getCachedOptions(setPreviousOptions, null, setIsOptionsLoaded, identifier, selected);
                         }
                     } else {
+                        if(!started){
+                            setStarted(true);
+                            setSelected(0);
+                        }
                         setIsOptionsLoaded(true);
                     }
                 });
