@@ -56,8 +56,11 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
     const[needAdapt, setNeedAdapt] = useState(false);
 
     useEffect(() => {
-        setPreferences(id, data.header, options, setOptions);
-        if(previousOptions !== null) setOptions(previousOptions);
+        if(previousOptions !== null) {
+            setOptions(previousOptions);
+        } else {
+            setPreferences(id, data.header, options, setOptions);
+        }
     },[])
 
 

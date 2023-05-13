@@ -12,6 +12,7 @@ export default function OneNumerical({data, graphSelected, setGraphSelected, opt
     const chooseGraph = () => {
         let plotsInfo = [plots, graphSelected, setGraphSelected]
 
+        console.log(previousOptions)
         switch(graphSelected){
             case 0:
                 return <BarPlotComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions}/>;

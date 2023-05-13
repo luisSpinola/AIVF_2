@@ -45,6 +45,7 @@ export const getCachedOptions = async (setPreviousOptions, setSelected, setIsOpt
     const cachedResponse = await cacheStorage.match(SAVE_CACHE_NAME);
     return cachedResponse.json().then((item) => {
         let found = false;
+        let found_selected = false;
         for(let i=0; i<item.length; i++){
             if(item[i].id === identifier[0]){
                 for(let j=0; j<item[i].pages.length; j++){
@@ -52,6 +53,7 @@ export const getCachedOptions = async (setPreviousOptions, setSelected, setIsOpt
                         for(let y=0; y<item[i].pages[j].plotsCollection.length; y++){
                             if(item[i].pages[j].plotsCollection[y].plot_collection_id === identifier[2]){
                                 if(setSelected !== null){
+                                    found_selected = true;
                                     setSelected(item[i].pages[j].plotsCollection[y].selected);
                                 }
                                 for(let x=0; x<item[i].pages[j].plotsCollection[y].plot.length; x++){
@@ -74,6 +76,8 @@ export const getCachedOptions = async (setPreviousOptions, setSelected, setIsOpt
         if(!found) {
             setPreviousOptions(null);
         };
+
+        if(!found_selected && setSelected !== null) setSelected(0);
 
         setIsOptionsLoaded(true);
         
