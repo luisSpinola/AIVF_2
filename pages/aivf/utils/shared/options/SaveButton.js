@@ -22,12 +22,6 @@ export default function SaveButton({id, options, identifier}){
     }
 
     const watchOptions = () => {
-        // TODO
-        console.log("|||||||||||||||    START SAVE    |||||||||||||||");
-        console.table(identifier);
-        console.table(options);
-        console.log("selected", id);
-
         switch(SAVE_MODE){
             case 'cache':
                 saveInCache();
@@ -35,9 +29,6 @@ export default function SaveButton({id, options, identifier}){
             default:
                 break;
         }
-        
-
-        console.log("|||||||||||||||    END SAVE    |||||||||||||||");
     }
 
     const finishSavingFlags = () => {
@@ -102,7 +93,6 @@ export default function SaveButton({id, options, identifier}){
                         new_cache[i].pages.push(getCacheObjPages());
                     }
                 }
-                console.log(item[i]);
             }
 
             if(!user_exists){ // CREATE USER
@@ -151,7 +141,6 @@ export default function SaveButton({id, options, identifier}){
 
     const saveCache = (saveObj) => {
         console.log("CACHE SAVED");
-
         if('caches' in  window) {
             const data = new Response(JSON.stringify(saveObj));
             caches.open(SAVE_CACHE_NAME).then((cache) => {

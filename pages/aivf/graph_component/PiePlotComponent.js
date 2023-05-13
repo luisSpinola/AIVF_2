@@ -15,11 +15,10 @@ import { getPieLabelListOptions } from "../utils/shared/options/sections/plot/pi
 import { getRadiusOptions } from "../utils/shared/options/sections/plot/pie/radius";
 import SaveButton from "../utils/shared/options/SaveButton";
 
-export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, identifier}) {
+export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
-        invert_axes: VALUE_INVERT_AXES,
         //  Radius
         radius_auto: false,
         radius_inner: 55,
@@ -53,6 +52,7 @@ export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, iden
 
     useEffect(() => {
         setPreferences(id, data.header, options, setOptions);
+        if(previousOptions !== null) setOptions(previousOptions);
     },[])
 
     const sidebarOptions = () => {

@@ -7,6 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 //  STRINGS
 import { PLOT_SELECTION } from "../../localization/ptPt";
+import { SAVE_MODE } from "../../default/defaults";
 
 export const handleSidebarOptions = (optionsFlag, sections, plotsInfo) => {
     return (

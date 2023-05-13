@@ -16,7 +16,7 @@ import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
 import BarPlot from "../libraries/recharts/BarPlot";
 
-export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, identifier}) {
+export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -57,6 +57,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
 
     useEffect(() => {
         setPreferences(id, data.header, options, setOptions);
+        if(previousOptions !== null) setOptions(previousOptions);
     },[])
 
 
