@@ -18,16 +18,19 @@ export default function GraphChooser({identifier, data, options}) {
     }, [])
 
     useEffect(() => {
-        if(SAVE_MODE === "cache")
+        if(selected === "-1"){
+
+        } else if(SAVE_MODE === "cache"){
             if('caches' in window){
                 caches.has(SAVE_CACHE_NAME).then((hasCache) => {
                     if(hasCache){
                         getCachedOptions(setPreviousOptions, null, setIsOptionsLoaded, identifier, selected);
                     } else {
-
+                        setIsOptionsLoaded(true);
                     }
                 });
             }
+        }
     }, [selected])
 
     const setSelectedTop = (value) => {
@@ -64,7 +67,7 @@ export default function GraphChooser({identifier, data, options}) {
 
     return(
         <React.Fragment>
-            {isOptionsLoaded && chooseType()}
+            {isOptionsLoaded ? chooseType() : <LinearProgress sx={{m:'1rem'}}/>}
         </React.Fragment>
     )
 }

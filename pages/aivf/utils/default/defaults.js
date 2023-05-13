@@ -13,7 +13,7 @@ export const VALUE_DISPLAY_MODE = 'default';
 export const VALUE_MARGIN_TOP = 20;
 export const VALUE_MARGIN_BOTTTOM = 0;
 export const VALUE_MARGIN_LEFT = 0;
-export const VALUE_MARGIN_RIGHT = 0;
+export const VALUE_MARGIN_RIGHT = 30;
 //  Y
 export const VALUE_Y_TICK = 4;
 export const VALUE_Y_SCALE = 0;

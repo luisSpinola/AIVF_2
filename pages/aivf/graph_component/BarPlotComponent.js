@@ -56,7 +56,6 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
     const[needAdapt, setNeedAdapt] = useState(false);
 
     useEffect(() => {
-        console.log(previousOptions);
         setPreferences(id, data.header, options, setOptions);
         if(previousOptions !== null) setOptions(previousOptions);
     },[])
@@ -71,7 +70,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
             {getGridOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
             <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.header.value.length} opacity={true} section={true}/>
-            <SaveButton id={id} options={options} identifier={identifier}/>
+            <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
     }

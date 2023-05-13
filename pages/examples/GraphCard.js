@@ -17,7 +17,7 @@ export default function GraphCard({identifier, graphData, title}){
                 title={<Typography sx={{fontWeight:'bold'}} variant='body2'>{title}</Typography>} className="custom-card-header" action={
                 <React.Fragment>
                     { showIcons && 
-                        <IconButton sx={{marginRight:'-1.5rem'}} size="small" onClick={() => setOptions(!options)}>
+                        <IconButton sx={{marginRight:'.3rem'}} size="small" onClick={() => setOptions(!options)}>
                             <SettingsIcon fontSize="0.8rem"/>
                         </IconButton>
                     }

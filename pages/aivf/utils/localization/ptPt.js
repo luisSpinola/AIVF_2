@@ -5,6 +5,8 @@ export const ERROR_GRAPH_NOT_FOUND = "Ocorreu um erro ao gerar este gráfico (GR
 //
 export const SAVE_TOOLTIP = "Guardar Alterações";
 export const SAVE_TOOLTIP_SAVING = "A Guardar Alterações...";
+export const SAVE_SAVED = "Guardado com sucesso";
+export const RESET_TOOLTIP = "Limpar Alterações";
 
 //  PLOTS
 export const PLOT_SELECTION = "Gráfico";

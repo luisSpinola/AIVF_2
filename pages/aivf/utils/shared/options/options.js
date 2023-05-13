@@ -24,7 +24,7 @@ export const getPlotsSelection = (plotsInfo) => {
             <FormControl size="small" fullWidth variant="filled">
                 <InputLabel id="demo-simple-select-standard-label">{PLOT_SELECTION}</InputLabel>
                 <Select labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard" sx={{fontSize:'0.9rem'}} value={plotsInfo[1]} onChange={(e) => plotsInfo[2](e.target.value)}>
+                    id="demo-simple-select-standard" sx={{fontSize:'0.9rem'}} value={plotsInfo[1]} onChange={(e) => plotsInfo[2](e.target.value)}>
                     {plotsInfo[0].map((elem, index) => {
                         return (
                             <MenuItem sx={{fontSize:'0.9rem'}} key={index} value={index}>
