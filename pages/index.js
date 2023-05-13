@@ -3,23 +3,22 @@ import GraphCard from "./examples/GraphCard";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const theme_dark = createTheme({
+const theme = createTheme({
     palette: {
-        mode: 'dark',
+        //mode: 'dark',
     },
 });
 
-const theme = createTheme({
-    palette: {
-    },
-});
+const pageName = "PAGE_INDEX";
+const userID = 1;
+const identifierStart = [userID, pageName];
 
 export default function Main() {
     return (
         <ThemeProvider theme={theme}>
             <div className="custom-flex-container">
-                <GraphCard graphData={example_one_numerical_1} title={"Exemplo 1"}/>
-                <GraphCard graphData={example_one_numerical_1} title={"Exemplo 2"}/>
+                <GraphCard graphData={example_one_numerical_1} title={"Exemplo 1"} identifier={[...identifierStart, 1]}/>
+                <GraphCard graphData={example_one_numerical_1} title={"Exemplo 2"} identifier={[...identifierStart, 2]}/>
             </div>
         </ThemeProvider>
     );

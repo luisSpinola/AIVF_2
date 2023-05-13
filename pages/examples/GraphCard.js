@@ -24,7 +24,7 @@ export default function GraphCard({identifier, graphData, title}){
                 </React.Fragment>
             }/>
             <div className="custom-card-body">
-                <GraphChooser data={graphData} options={[options, setOptions]}/>
+                <GraphChooser data={graphData} options={[options, setOptions]} identifier={identifier}/>
             </div>
         </Card>
     )

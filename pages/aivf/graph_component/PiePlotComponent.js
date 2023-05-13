@@ -13,8 +13,9 @@ import ColorSelector from "../utils/shared/options/sections/plot/ColorSelector";
 import PiePlot from "../libraries/recharts/PiePlot";
 import { getPieLabelListOptions } from "../utils/shared/options/sections/plot/pie/pieLabelList";
 import { getRadiusOptions } from "../utils/shared/options/sections/plot/pie/radius";
+import SaveButton from "../utils/shared/options/SaveButton";
 
-export default function PiePlotComponent({id, data, optionsFlag, plotsInfo}) {
+export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, identifier}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -62,6 +63,7 @@ export default function PiePlotComponent({id, data, optionsFlag, plotsInfo}) {
             {getMarginOptions(options, setOptions)}
             {getRadiusOptions(options, setOptions)}
             <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.data.length} opacity={false} section={true}/>
+            <SaveButton id={id} options={options} identifier={identifier}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
     }

@@ -3,7 +3,7 @@ import { ERROR_GRAPH_NOT_FOUND, BAR_PLOT, PIE_CHART } from '../utils/localizatio
 import BarPlotComponent from '../graph_component/BarPlotComponent';
 import PiePlotComponent from '../graph_component/PiePlotComponent';
 
-export default function OneNumerical({data, graphSelected, optionsFlag, watchOptions}) {
+export default function OneNumerical({data, graphSelected, optionsFlag, identifier}) {
     const plots = [BAR_PLOT, PIE_CHART];
 
     const [selected, setSelected] = useState(graphSelected);
@@ -13,9 +13,9 @@ export default function OneNumerical({data, graphSelected, optionsFlag, watchOpt
 
         switch(selected){
             case 0:
-                return <BarPlotComponent id={selected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} watchOptions={watchOptions}/>;
+                return <BarPlotComponent id={selected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier}/>;
             case 1:
-                return <PiePlotComponent id={selected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} watchOptions={watchOptions}/>;
+                return <PiePlotComponent id={selected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier}/>;
             default:
                 return <React.Fragment>{ERROR_GRAPH_NOT_FOUND}</React.Fragment>
         }

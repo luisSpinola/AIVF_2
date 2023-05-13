@@ -1,5 +1,6 @@
 //  SAVE
 export const SAVE_MODE = 'cache'; // none, cache, db
+export const SAVE_CACHE_NAME = "GRAPH_OPTIONS";
 export const SAVE_TIMER = 5; // number of seconds to periodically check for changes
 
 //  COLOR

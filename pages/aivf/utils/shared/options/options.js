@@ -1,17 +1,12 @@
-import { useState } from "react";
-
 //  MUI
 import InputLabel from "@mui/material/InputLabel";
 import Drawer from "@mui/material/Drawer";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import Tooltip from "@mui/material/Tooltip";
-import Button from "@mui/material/Button";
-import SaveIcon from '@mui/icons-material/Save';
 
 //  STRINGS
-import { PLOT_SELECTION, SAVE_TOOLTIP } from "../../localization/ptPt";
+import { PLOT_SELECTION } from "../../localization/ptPt";
 
 export const handleSidebarOptions = (optionsFlag, sections, plotsInfo) => {
     return (
@@ -38,25 +33,6 @@ export const getPlotsSelection = (plotsInfo) => {
                     })}
                 </Select>
             </FormControl>
-        </div>
-    )
-}
-
-export function SaveButton({id, options, watchOptions}){
-    const [isSaving, setIsSaving] = useState(false);
-
-    const onSave = () => {
-        setIsSaving(true);
-        setIsSaving(watchOptions(options, id));
-    }
-
-    return (
-        <div style={{display:'flex', flexDirection:'row-reverse', margin:'1rem'}}>
-            <Tooltip title={SAVE_TOOLTIP}>
-                <Button disabled={isSaving} onClick={onSave} style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}} size="small" variant="contained"> 
-                    <SaveIcon/> 
-                </Button>
-            </Tooltip>
         </div>
     )
 }
