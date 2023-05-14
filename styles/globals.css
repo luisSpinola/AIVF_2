@@ -3,8 +3,9 @@
     flex-wrap: wrap;
 }
 .custom-card {
-    min-width: 40rem;
+    min-width: 45rem;
     padding-bottom: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
+    min-height: '250px';
 }

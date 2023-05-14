@@ -25,3 +25,18 @@ export const getOptionIfExists = (value) => {
     return false;
 }
 
+export const CustomTooltip = ({ active, payload, label}) => {
+    if (active && payload && payload.length) {
+        return (
+            <div style={{padding:'0.5rem',boxShadow: '0 15px 25px rgba(129, 124, 124, 0.7)', borderRadius: '5px',
+                backdropFilter: 'blur(14px)', backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+                <div>{label}</div>
+                {payload.map((elem, index) => {
+                    return <div key={index}>{elem.dataKey}: <strong>{elem.value}</strong></div>
+                })}
+                
+            </div>
+        );
+    }
+    return null;
+};

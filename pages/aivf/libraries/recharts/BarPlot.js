@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 //  RECHARTS
-import { ResponsiveContainer, BarChart, Bar, LabelList, Tooltip } from "recharts";
+import { ResponsiveContainer, BarChart, Bar, LabelList, Tooltip, ComposedChart, Rectangle } from "recharts";
 import { handleAxes, handleGridOptions, handleLegendOptions } from "./components/components";
 //  SHARED
 import { getDataFormater } from "../../utils/shared/dataFormatters";
-import { getOptionIfExists } from "../../utils/shared/functions";
+import { CustomTooltip, getOptionIfExists } from "../../utils/shared/functions";
+
+const CustomCursor = props => {
+    const { x, y, width, height, stroke } = props;
+    return <Rectangle fill="red" stroke="red" x={x} y={y} width={width} height={height} />;
+};
 
 export default function BarPlot({data, options}){
+    const [tooltipCursorWidth, setTooltipCursorWidth] = useState(null);
+    const initChart = ref => {
+        if(ref){ 
+            const tooltipCursorWidth1 = ref.state.xAxisMap[0].width / data.data.length;
+            setTooltipCursorWidth(tooltipCursorWidth1);
+        }
+    };
+
     const getPlot = () => {
         let tickFormatter = getDataFormater(options.display_mode);
         let stacked = getOptionIfExists(options.stacked);
@@ -19,7 +32,22 @@ export default function BarPlot({data, options}){
         if(options.labelList) 
             labelList = <LabelList formatter={tickFormatter} offset={options.labelList_offset} angle={options.labelList_angle} position={options.labelList_pos}/>
         if(grouped){
-
+            return <ResponsiveContainer width="100%" height={options.height}>
+                <ComposedChart ref={initChart} layout={axesArray[2]} data={data.data} margin={margin}>
+                    {axesArray[0]}
+                    {axesArray[1]}
+                    {grid}
+                    {legend}
+                    <Tooltip content={<CustomTooltip/>} cursor={{ strokeWidth: tooltipCursorWidth }} formatter={tickFormatter} isAnimationActive={false}/>
+                    {
+                        data.header.value.map((_, i) => {
+                            return <Bar key={i} yAxisId="left" dataKey={data.header.value[i]} fill={options.colors[i]} fillOpacity={options.colors_opacity/100}>
+                                {labelList}
+                            </Bar>
+                        })
+                    }
+                </ComposedChart>
+            </ResponsiveContainer>
         } else {
             let plots = [];
             for(let i=0; i<data.header.value.length; i++){
@@ -30,9 +58,9 @@ export default function BarPlot({data, options}){
                             {axesArray[1]}
                             {grid}
                             {legend}
-                            <Tooltip formatter={tickFormatter} isAnimationActive={false}/>
+                            <Tooltip content={<CustomTooltip/>} formatter={tickFormatter} isAnimationActive={false}/>
                             <Bar yAxisId="left" dataKey={data.header.value[i]} fill={options.colors[i]} fillOpacity={options.colors_opacity/100}>
-                                {labelList} 
+                                {labelList}
                             </Bar>
                         </BarChart>
                     </ResponsiveContainer>

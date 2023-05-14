@@ -4,9 +4,11 @@ import React, {useState, useEffect} from 'react';
 import { ERROR_TYPE_NOT_FOUND } from '../utils/localization/ptPt';
 
 import OneNumerical from '../data_types/One_Numerical';
+import NNumerical from '../data_types/N_Numerical';
 import { SAVE_CACHE_NAME, SAVE_MODE } from '../utils/default/defaults';
 import { getCachedOptions } from '../utils/shared/options/options';
 import { LinearProgress } from '@mui/material';
+
 
 export default function GraphChooser({identifier, data, options}) {
     const [isOptionsLoaded, setIsOptionsLoaded] = useState(false);
@@ -47,6 +49,8 @@ export default function GraphChooser({identifier, data, options}) {
         switch(data.header.type){
             case "one_numerical":
                 return <OneNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions}/>;
+            case "n_numerical":
+                return <NNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions}/>;
             default:
                 return <React.Fragment>{ERROR_TYPE_NOT_FOUND}</React.Fragment>;
         }

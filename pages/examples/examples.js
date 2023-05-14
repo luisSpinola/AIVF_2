@@ -15,7 +15,7 @@ export const example_one_numerical_1 = {
             "GW": 127.0
         },
         { 
-            "Country": "Germany",
+            "Country": "GE",
             "GW": 62.4
         },
         { 
@@ -36,3 +36,37 @@ export const example_one_numerical_1 = {
         },
     ]
 }
+
+export const example_n_numerical_1 = {
+    header:{
+        type: "n_numerical",
+        id: ["id"],
+        value: ["value1","value2","value3"]
+    },
+    data: [ 
+        { 
+            "id": "Valor 1",
+            "value1": 8000,
+            "value2": 4000,
+            "value3": 6000
+        },
+        { 
+            "id": "Valor 2",
+            "value1": 5000,
+            "value2": 7000,
+            "value3": 9000
+        },
+        { 
+            "id": "Valor 3",
+            "value1": 13000,
+            "value2": 4000,
+            "value3": 2000
+        },
+        { 
+            "id": "Valor 4",
+            "value1": 7000,
+            "value2": 6000,
+            "value3": 1000
+        },
+    ]
+};

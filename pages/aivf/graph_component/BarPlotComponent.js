@@ -16,7 +16,7 @@ import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
 import BarPlot from "../libraries/recharts/BarPlot";
 
-export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions}) {
+export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, multi}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -48,6 +48,9 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
         colors: VALUE_COLOR,
         colors_opacity: 100,
         colors_lock: true,
+        //  Multi
+        grouped: false,
+        stacked: false,
 
         invert_axes: VALUE_INVERT_AXES,
         display_mode: VALUE_DISPLAY_MODE, // default, currency, percentage
@@ -66,7 +69,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
 
     const sidebarOptions = () => {
         let sections = <React.Fragment>
-            {getGeneralOptions(options, setOptions)}
+            {multi ? getGeneralOptions(options, setOptions, {grouped: true}) : getGeneralOptions(options, setOptions, {grouped: false})}
             {getAxesOptions(options, setOptions, {invert:true})}
             {getLabelListOptions(options, setOptions)}
             {getLegendOptions(options, setOptions)}

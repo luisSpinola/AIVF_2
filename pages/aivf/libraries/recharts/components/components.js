@@ -6,16 +6,17 @@ export const handleAxes = (inverted, yTick, scale, dataKey, reversed) => {
     let orientation;
     (reversed) ? orientation = 'right' : orientation = 'left';
     let axisScale = 'auto';
-    if(scale === 1) axisScale = 'log';
+    let domain = null;
+    if(scale === 1) {axisScale = 'log'; domain = ['auto', 'auto']};
 
     let axes = [];
     if(!inverted){
-        axes.push(<YAxis yAxisId="left" tickCount={yTick} tickFormatter={tickFormatters} scale={axisScale} domain={['auto', 'auto']}/>);
+        axes.push(<YAxis yAxisId="left" tickCount={yTick} tickFormatter={tickFormatters} scale={axisScale} domain={domain}/>);
         axes.push(<XAxis dataKey={dataKey}/>);
         axes.push('horizontal');
     } else {
         axes.push(<YAxis yAxisId="left" orientation={orientation} dataKey={dataKey} type="category"/>);
-        axes.push(<XAxis reversed={reversed} type="number" tickCount={yTick} tickFormatter={tickFormatters} scale={axisScale} domain={['auto', 'auto']}/>);
+        axes.push(<XAxis reversed={reversed} type="number" tickCount={yTick} tickFormatter={tickFormatters} scale={axisScale} domain={domain}/>);
         axes.push('vertical');
     }
     return axes;
