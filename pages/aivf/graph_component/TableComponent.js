@@ -36,7 +36,7 @@ export default function TableComponent({id, data, optionsFlag, plotsInfo, identi
 
     const sidebarOptions = () => {
         let sections = <React.Fragment>
-            {getGeneralOptions(options, setOptions, {grouped: false})}
+            {getGeneralOptions(options, setOptions, {grouped: false, stacked: false})}
             {getMarginOptions(options, setOptions)}
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>

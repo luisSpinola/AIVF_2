@@ -12,6 +12,7 @@ export const RESET_TOOLTIP = "Limpar Alterações";
 export const PLOT_SELECTION = "Gráfico";
 export const BAR_PLOT = "Barras";
 export const PIE_CHART = "Setores";
+export const LINE_PLOT = "Linha";
 export const TABLE_CHART = "Tabela";
 
 //  PLOTS OPTIONS
@@ -52,6 +53,7 @@ export const OPTIONS_LEGEND_DIR = "Direção";
 export const OPTIONS_LEGEND_ALIGN = "Alinhamento";
 
 export const OPTIONS_GROUPED = "Agrupado";
+export const OPTIONS_STACKED = "Empilhado";
 
 export const OPTIONS_SECTION_COLOR = "Cor";
 export const OPTIONS_COLOR_OPACITY = "Opacidade";

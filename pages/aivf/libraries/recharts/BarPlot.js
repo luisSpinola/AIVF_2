@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 //  RECHARTS
-import { ResponsiveContainer, BarChart, Bar, LabelList, Tooltip, ComposedChart, Rectangle } from "recharts";
+import { ResponsiveContainer, BarChart, Bar, LabelList, Tooltip, ComposedChart, YAxis, Line } from "recharts";
 import { handleAxes, handleGridOptions, handleLegendOptions } from "./components/components";
 //  SHARED
 import { getDataFormater } from "../../utils/shared/dataFormatters";
 import { CustomTooltip, getOptionIfExists } from "../../utils/shared/functions";
-
-const CustomCursor = props => {
-    const { x, y, width, height, stroke } = props;
-    return <Rectangle fill="red" stroke="red" x={x} y={y} width={width} height={height} />;
-};
 
 export default function BarPlot({data, options}){
     const [tooltipCursorWidth, setTooltipCursorWidth] = useState(null);
@@ -20,14 +15,28 @@ export default function BarPlot({data, options}){
         }
     };
 
+    const getExtraLine = () => {
+        let returnArray = [];
+        if(data.header.line !== undefined){
+            returnArray.push(<YAxis yAxisId="right" orientation="right"/>);
+            returnArray.push(<Line legendType="plainline" yAxisId="right" type="linear" 
+                strokeWidth={2} dot={{ stroke: 'black', strokeWidth: 3, r: 1 }} dataKey={data.header.line[0]} stroke={options.colors[data.header.value.length]} 
+            />);
+        }
+        return returnArray;
+    }
+
     const getPlot = () => {
         let tickFormatter = getDataFormater(options.display_mode);
-        let stacked = getOptionIfExists(options.stacked);
         let grouped = getOptionIfExists(options.grouped);
         let margin = {top:options.margin_top, right:options.margin_right, left:options.margin_left, bottom:options.margin_bottom};
         let axesArray = handleAxes(options.invert_axes, options.yTick, options.scale, data.header.id[0], false);
         let grid = handleGridOptions(options.grid, options.grid_stroke, options.grid_vertical, options.grid_horizontal, options.grid_opacity);
         let legend = handleLegendOptions(options.legend, options.legend_align, options.legend_pos, 'horizontal');
+        let extraLine = getExtraLine();
+        console.log(extraLine);
+        let stacked = null; if(options.stacked) stacked = "a";
+
         let labelList = null;
         if(options.labelList) 
             labelList = <LabelList formatter={tickFormatter} offset={options.labelList_offset} angle={options.labelList_angle} position={options.labelList_pos}/>
@@ -41,11 +50,13 @@ export default function BarPlot({data, options}){
                     <Tooltip content={<CustomTooltip/>} cursor={{ strokeWidth: tooltipCursorWidth }} formatter={tickFormatter} isAnimationActive={false}/>
                     {
                         data.header.value.map((_, i) => {
-                            return <Bar key={i} yAxisId="left" dataKey={data.header.value[i]} fill={options.colors[i]} fillOpacity={options.colors_opacity/100}>
+                            return <Bar key={i} yAxisId="left" stackId={stacked} dataKey={data.header.value[i]} fill={options.colors[i]} fillOpacity={options.colors_opacity/100}>
                                 {labelList}
                             </Bar>
                         })
                     }
+                    {extraLine[0]}
+                    {extraLine[1]}
                 </ComposedChart>
             </ResponsiveContainer>
         } else {

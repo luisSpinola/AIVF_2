@@ -57,7 +57,7 @@ export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, iden
 
     const sidebarOptions = () => {
         let sections = <React.Fragment>
-            {getGeneralOptions(options, setOptions, {grouped: false})}
+            {getGeneralOptions(options, setOptions, {grouped: false, stacked: false})}
             {getPieLabelListOptions(options, setOptions)}
             {getLegendOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}

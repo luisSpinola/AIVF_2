@@ -4,6 +4,7 @@ import { ResponsiveContainer, LabelList, Tooltip, PieChart, Pie, Cell } from "re
 import { handleLegendOptions } from "./components/components";
 //  SHARED
 import { getDataFormater } from "../../utils/shared/dataFormatters";
+import { CustomTooltip } from "../../utils/shared/functions";
 
 export default function PiePlot({data, options}) {
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, value }) => {
@@ -53,7 +54,7 @@ export default function PiePlot({data, options}) {
             <ResponsiveContainer width="100%" height={options.height}>
                 <PieChart margin={margin}>
                     {legend}
-                    <Tooltip formatter={tickFormatter} isAnimationActive={false}/>
+                    <Tooltip content={<CustomTooltip/>} formatter={tickFormatter} isAnimationActive={false}/>
                     <Pie paddingAngle={spacing} innerRadius={inner} outerRadius={outer}
                         labelLine={labelLine} label={(options.labelList_mode === 0 || !options.labelList) ? labelList : renderCustomizedLabel} data={data.data} startAngle={0} endAngle={360} dataKey={data.header.value[0]} nameKey={data.header.id[0]}>
                         {data.data.map((entry, index) => <Cell key={options.colors[index]} fill={options.colors[index % options.colors.length]}/>)}

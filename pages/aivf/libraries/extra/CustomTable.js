@@ -20,8 +20,15 @@ export default function CustomTable({data, options}) {
         for(let i=0; i<data.header.value.length; i++){
             columns1.push({
                 field: data.header.value[i], headerName: data.header.value[i], type: 'number', renderHeader: (params) => (<strong style={{fontSize:'0.8rem'}}>{data.header.value[i]}</strong>),
-                
             })
+        }
+
+        if(data.header.line){
+            for(let i=0; i<data.header.line.length; i++){
+                columns1.push({
+                    field: data.header.line[i], headerName: data.header.line[i], type: 'number', renderHeader: (params) => (<strong style={{fontSize:'0.8rem'}}>{data.header.line[i]}</strong>),
+                })
+            }
         }
 
         setRows(rows1);
