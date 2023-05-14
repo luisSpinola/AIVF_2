@@ -11,16 +11,20 @@ import { getMarginOptions } from "../utils/shared/options/sections/plot/margin";
 import { getAxesOptions } from "../utils/shared/options/sections/plot/axes";
 import { getLabelListOptions } from "../utils/shared/options/sections/plot/labelList";
 import { getLegendOptions } from "../utils/shared/options/sections/plot/legend";
+import { getLineOptions } from "../utils/shared/options/sections/plot/line";
 import ColorSelector from "../utils/shared/options/sections/plot/ColorSelector";
 import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
-import BarPlot from "../libraries/recharts/BarPlot";
+import LinePlot from "../libraries/recharts/LinePlot";
 
 export default function LinePlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, multi}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
         invert_axes: VALUE_INVERT_AXES,
+        interpolation: 'linear',
+        dots: true,
+        line_stroke: 2,
         //  Margin
         margin_top: VALUE_MARGIN_TOP,
         margin_bottom: VALUE_MARGIN_BOTTTOM,
@@ -73,6 +77,7 @@ export default function LinePlotComponent({id, data, optionsFlag, plotsInfo, ide
         let sections = <React.Fragment>
             {multi ? getGeneralOptions(options, setOptions, {grouped: true, stacked: false}) : getGeneralOptions(options, setOptions, {grouped: false, stacked: false})}
             {getAxesOptions(options, setOptions, {invert:true})}
+            {getLineOptions(options, setOptions)}
             {getLabelListOptions(options, setOptions)}
             {getLegendOptions(options, setOptions)}
             {getGridOptions(options, setOptions)}
@@ -85,7 +90,7 @@ export default function LinePlotComponent({id, data, optionsFlag, plotsInfo, ide
     
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt, <BarPlot data={data} options={options}/>)}
+            {getGraphComponent(needAdapt, <LinePlot data={data} options={options}/>)}
             {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )

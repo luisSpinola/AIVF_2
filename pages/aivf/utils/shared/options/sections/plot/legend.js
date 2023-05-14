@@ -5,7 +5,6 @@ import { getSectionStructure } from "../components/sectionStructure";
 
 //  MUI
 import Switch from "@mui/material/Switch";
-import Divider from "@mui/material/Divider";
 
 export const getLegendOptions = (options, setOptions) => {
     let switchComponent = <Switch size="small" checked={options.legend} onChange={(e) => updateOptions("legend", e.target.checked, options, setOptions)} onClick={(event) => event.stopPropagation()} onFocus={(event) => event.stopPropagation()}/>

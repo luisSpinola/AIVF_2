@@ -34,7 +34,6 @@ export default function BarPlot({data, options}){
         let grid = handleGridOptions(options.grid, options.grid_stroke, options.grid_vertical, options.grid_horizontal, options.grid_opacity);
         let legend = handleLegendOptions(options.legend, options.legend_align, options.legend_pos, 'horizontal');
         let extraLine = getExtraLine();
-        console.log(extraLine);
         let stacked = null; if(options.stacked) stacked = "a";
 
         let labelList = null;
