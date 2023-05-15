@@ -18,7 +18,7 @@ export const VALUE_MARGIN_RIGHT = 30;
 export const VALUE_Y_TICK = 4;
 export const VALUE_Y_SCALE = 0;
 //  LABEL LIST
-export const VALUE_LABELLIST = true;
+export const VALUE_LABELLIST = false;
 export const VALUE_LABELLIST_POSITION = 'top';
 export const VALUE_LABELLIST_OFFSET = 5;
 export const VALUE_LABELLIST_ANGLE = 0;

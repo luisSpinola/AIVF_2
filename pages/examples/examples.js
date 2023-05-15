@@ -35,7 +35,7 @@ export const example_one_numerical_1 = {
             "GW": 17.4
         },
     ]
-}
+};
 
 export const example_n_numerical_1 = {
     header:{
@@ -43,35 +43,84 @@ export const example_n_numerical_1 = {
         id: ["id"],
         value: ["value1","value2","value3"],
         line: ["Performance (%)"],
+        preferences: [{margin_right: 0},{margin_right: 0},{margin_right: 0}]
     },
     data: [ 
         { 
-            "id": "Valor 1",
+            "id": "Q1",
             "value1": 8000,
             "value2": 4000,
             "value3": 6000,
             "Performance (%)": 40
         },
         { 
-            "id": "Valor 2",
+            "id": "Q2",
             "value1": 5000,
             "value2": 7000,
             "value3": 9000,
             "Performance (%)": 60
         },
         { 
-            "id": "Valor 3",
+            "id": "Q3",
             "value1": 13000,
             "value2": 4000,
             "value3": 2000,
             "Performance (%)": 20
         },
         { 
-            "id": "Valor 4",
+            "id": "Q4",
             "value1": 7000,
             "value2": 6000,
             "value3": 1000,
             "Performance (%)": 80
         },
+    ]
+};
+
+export const example_n_numerical_2 = {
+    header:{
+        type: "n_numerical",
+        id: ["id"],
+        value: ["value1","value2","value3"]
+    },
+    data: [ 
+        { 
+            "id": "Q1",
+            "value1": 8000,
+            "value2": 4000,
+            "value3": 6000,
+        },
+        { 
+            "id": "Q2",
+            "value1": 5000,
+            "value2": 7000,
+            "value3": 9000,
+        },
+        { 
+            "id": "Q3",
+            "value1": 13000,
+            "value2": 4000,
+            "value3": 2000,
+        },
+        { 
+            "id": "Q4",
+            "value1": 7000,
+            "value2": 6000,
+            "value3": 1000,
+        },
+    ]
+};
+
+export const example_performance_1 = {
+    "header":{
+        "type":"performance",
+        "value":["Valor"],
+        "objective":["Meta"],
+    },
+    "data":[
+        {
+            "Valor": 63,
+            "Meta":  100,
+        }
     ]
 };

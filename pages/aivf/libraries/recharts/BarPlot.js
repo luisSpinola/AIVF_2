@@ -36,17 +36,17 @@ export default function BarPlot({data, options}){
         let extraLine = getExtraLine();
         let stacked = null; if(options.stacked) stacked = "a";
 
+        let tooltip = <Tooltip content={<CustomTooltip/>} cursor={{ strokeWidth: tooltipCursorWidth, strokeOpacity:'0.5'}} formatter={tickFormatter} isAnimationActive={false}/>;
         let labelList = null;
         if(options.labelList) 
             labelList = <LabelList formatter={tickFormatter} offset={options.labelList_offset} angle={options.labelList_angle} position={options.labelList_pos}/>
         if(grouped){
             return <ResponsiveContainer width="100%" height={options.height}>
                 <ComposedChart ref={initChart} layout={axesArray[2]} data={data.data} margin={margin}>
-                    {axesArray[0]}
-                    {axesArray[1]}
+                    
                     {grid}
                     {legend}
-                    <Tooltip content={<CustomTooltip/>} cursor={{ strokeWidth: tooltipCursorWidth }} formatter={tickFormatter} isAnimationActive={false}/>
+                    {tooltip}
                     {
                         data.header.value.map((_, i) => {
                             return <Bar key={i} yAxisId="left" stackId={stacked} dataKey={data.header.value[i]} fill={options.colors[i]} fillOpacity={options.colors_opacity/100}>
@@ -56,6 +56,8 @@ export default function BarPlot({data, options}){
                     }
                     {extraLine[0]}
                     {extraLine[1]}
+                    {axesArray[0]}
+                    {axesArray[1]}
                 </ComposedChart>
             </ResponsiveContainer>
         } else {
@@ -68,7 +70,7 @@ export default function BarPlot({data, options}){
                             {axesArray[1]}
                             {grid}
                             {legend}
-                            <Tooltip content={<CustomTooltip/>} formatter={tickFormatter} isAnimationActive={false}/>
+                            {tooltip}
                             <Bar yAxisId="left" dataKey={data.header.value[i]} fill={options.colors[i]} fillOpacity={options.colors_opacity/100}>
                                 {labelList}
                             </Bar>

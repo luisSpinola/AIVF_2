@@ -49,7 +49,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
         colors_opacity: 100,
         colors_lock: true,
         //  Multi
-        grouped: false,
+        grouped: true,
         stacked: false,
 
         invert_axes: VALUE_INVERT_AXES,

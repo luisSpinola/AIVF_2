@@ -36,17 +36,16 @@ export default function LinePlot({data, options}){
         let extraLine = getExtraLine();
         let stacked = null; if(options.stacked) stacked = "a";
 
+        let tooltip = <Tooltip content={<CustomTooltip/>} cursor={{ strokeWidth: tooltipCursorWidth, strokeOpacity:'0.5'}} formatter={tickFormatter} isAnimationActive={false}/>;
         let labelList = null;
         if(options.labelList) 
             labelList = <LabelList formatter={tickFormatter} offset={options.labelList_offset} angle={options.labelList_angle} position={options.labelList_pos}/>
         if(grouped){
             return <ResponsiveContainer width="100%" height={options.height}>
                 <ComposedChart ref={initChart} layout={axesArray[2]} data={data.data} margin={margin}>
-                    {axesArray[0]}
-                    {axesArray[1]}
+                    {tooltip}
                     {grid}
                     {legend}
-                    <Tooltip content={<CustomTooltip/>} cursor={{ strokeWidth: tooltipCursorWidth }} formatter={tickFormatter} isAnimationActive={false}/>
                     {
                         data.header.value.map((_, i) => {
                             return <Line key={i} yAxisId="left" stackId={stacked} dataKey={data.header.value[i]} type={options.interpolation} fill={options.colors[i]} stroke={options.colors[i]} strokeWidth={options.line_stroke} dot={options.dots} fillOpacity={options.colors_opacity/100} legendType="plainline"> 
@@ -56,6 +55,8 @@ export default function LinePlot({data, options}){
                     }
                     {extraLine[0]}
                     {extraLine[1]}
+                    {axesArray[0]}
+                    {axesArray[1]}
                 </ComposedChart>
             </ResponsiveContainer>
         } else {
@@ -64,11 +65,11 @@ export default function LinePlot({data, options}){
                 plots.push(
                     <ResponsiveContainer key={data.header.value[i]} width="100%" height={options.height}>
                         <LineChart layout={axesArray[2]} data={data.data} margin={margin}>
+                            {tooltip}
                             {axesArray[0]}
                             {axesArray[1]}
                             {grid}
                             {legend}
-                            <Tooltip content={<CustomTooltip/>} formatter={tickFormatter} isAnimationActive={false}/>
                             <Line yAxisId="left" dataKey={data.header.value[i]} type={options.interpolation} fill={options.colors[i]} stroke={options.colors[i]} strokeWidth={options.line_stroke} dot={options.dots} fillOpacity={options.colors_opacity/100} legendType="plainline">
                                 {labelList}
                             </Line>

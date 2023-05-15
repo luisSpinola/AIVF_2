@@ -5,9 +5,11 @@ import { ERROR_TYPE_NOT_FOUND } from '../utils/localization/ptPt';
 
 import OneNumerical from '../data_types/One_Numerical';
 import NNumerical from '../data_types/N_Numerical';
+import Performance from '../data_types/Performance';
 import { SAVE_CACHE_NAME, SAVE_MODE } from '../utils/default/defaults';
 import { getCachedOptions } from '../utils/shared/options/options';
 import { LinearProgress } from '@mui/material';
+
 
 
 export default function GraphChooser({identifier, data, options}) {
@@ -51,6 +53,8 @@ export default function GraphChooser({identifier, data, options}) {
                 return <OneNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions}/>;
             case "n_numerical":
                 return <NNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions}/>;
+            case "performance":
+                return <Performance optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions}/>
             default:
                 return <React.Fragment>{ERROR_TYPE_NOT_FOUND}</React.Fragment>;
         }

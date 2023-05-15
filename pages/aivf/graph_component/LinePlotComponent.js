@@ -53,7 +53,7 @@ export default function LinePlotComponent({id, data, optionsFlag, plotsInfo, ide
         colors_opacity: 100,
         colors_lock: true,
         //  Multi
-        grouped: false,
+        grouped: true,
 
         invert_axes: VALUE_INVERT_AXES,
         display_mode: VALUE_DISPLAY_MODE, // default, currency, percentage

@@ -39,3 +39,11 @@ export const CustomTooltip = ({ active, payload, label}) => {
     }
     return null;
 };
+
+export const CustomTooltipForDiv = (content) => {
+    return (
+        <div style={{fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0 15px 25px rgba(129, 124, 124, 0.7)', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+            {content}
+        </div>
+    );
+};

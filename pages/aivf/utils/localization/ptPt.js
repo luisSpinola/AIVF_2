@@ -13,6 +13,7 @@ export const PLOT_SELECTION = "Gráfico";
 export const BAR_PLOT = "Barras";
 export const PIE_CHART = "Setores";
 export const LINE_PLOT = "Linha";
+export const AREA_PLOT = "Área";
 export const TABLE_CHART = "Tabela";
 
 //  PLOTS OPTIONS

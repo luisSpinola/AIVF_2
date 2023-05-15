@@ -19,7 +19,7 @@ export const getLineOptions = (options, setOptions) => {
 
             <Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>
 
-            {sliderInput("Tamanho", "line_stroke", options, setOptions, {min: 1, max: 30, step:1}, false)}
+            {sliderInput("Tamanho", "line_stroke", options, setOptions, {min: 0, max: 30, step:1}, false)}
             
             <Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>
 
