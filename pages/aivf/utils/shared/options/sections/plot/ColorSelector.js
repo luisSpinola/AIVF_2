@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { OPTIONS_COLOR_OPACITY, OPTIONS_SECTION_COLOR } from "../../../../localization/ptPt";
 import { getSectionStructure } from "../components/sectionStructure";
-import { sliderInput, updateOptions } from "../components/inputs";
+import { sliderInput, switchInput, updateOptions } from "../components/inputs";
 
 //  COLOR
 import { SketchPicker } from 'react-color';
@@ -10,7 +10,7 @@ import reactCSS from 'reactcss';
 //  MUI
 import Divider from "@mui/material/Divider";
 
-export default function ColorSelector({option, options, setOptions, size, opacity, section}){
+export default function ColorSelector({option, options, setOptions, size, opacity, section, colors}){
     const [displayColorPicker, setDisplayColorPicker] = useState(Array(size).fill(false));
 
     const colorStyles = (colors, size) => {
@@ -68,7 +68,8 @@ export default function ColorSelector({option, options, setOptions, size, opacit
     const getDetails = () => {
         let colorsDisplay = getColorsDisplay();
         return <React.Fragment>
-            {colorsDisplay}
+            {colors && switchInput("Esquema Geral", "colors_lock", options, setOptions, false)}
+            {!options.colors_lock && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{colorsDisplay}</React.Fragment>}
             
             {opacity && 
                 <React.Fragment>

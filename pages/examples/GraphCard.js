@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 
-export default function GraphCard({identifier, graphData, title}){
+export default function GraphCard({identifier, graphData, title, colors}){
     const [options, setOptions] = useState(false);
     const [showIcons, setShowIcons] = useState(false);
     return (
@@ -24,7 +24,7 @@ export default function GraphCard({identifier, graphData, title}){
                 </React.Fragment>
             }/>
             <div className="custom-card-body">
-                <GraphChooser data={graphData} options={[options, setOptions]} identifier={identifier}/>
+                <GraphChooser data={graphData} options={[options, setOptions]} identifier={identifier} colors={colors}/>
             </div>
         </Card>
     )

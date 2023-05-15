@@ -12,12 +12,11 @@ import { LinearProgress } from '@mui/material';
 
 
 
-export default function GraphChooser({identifier, data, options}) {
+export default function GraphChooser({identifier, data, options, colors}) {
     const [isOptionsLoaded, setIsOptionsLoaded] = useState(false);
     const [previousOptions, setPreviousOptions] = useState(null);
     const [selected, setSelected] = useState(null);
     const [started, setStarted] = useState(false);
-
     useEffect(() => {
         if(selected === "-1"){} 
         else if(SAVE_MODE === "cache"){
@@ -50,11 +49,15 @@ export default function GraphChooser({identifier, data, options}) {
     const chooseType = () => {
         switch(data.header.type){
             case "one_numerical":
-                return <OneNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions}/>;
+                return <OneNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions} colors={colors}/>;
             case "n_numerical":
-                return <NNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions}/>;
+                return <NNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions} colors={colors}/>;
+            case "time_series":
+                break;
+            case "double_numerical":
+                break;
             case "performance":
-                return <Performance optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions}/>
+                return <Performance optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions} colors={colors}/>
             default:
                 return <React.Fragment>{ERROR_TYPE_NOT_FOUND}</React.Fragment>;
         }

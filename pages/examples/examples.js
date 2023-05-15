@@ -119,8 +119,8 @@ export const example_performance_1 = {
     },
     "data":[
         {
-            "Valor": 63,
-            "Meta":  100,
+            "Valor": 4547,
+            "Meta":  12000,
         }
     ]
 };

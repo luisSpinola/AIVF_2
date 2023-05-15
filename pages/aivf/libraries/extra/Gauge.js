@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
 import { CustomTooltipForDiv } from "../../utils/shared/functions";
 
-export default function Gauge({data, options}) {
+export default function Gauge({data, options, globalColors}) {
     const [isSelected, setSelected] = useState(false);
 
     const getPlot = () => {
@@ -12,11 +12,11 @@ export default function Gauge({data, options}) {
         let percentValue = (100*value)/maxValue;
         percentValue = percentValue.toFixed(0);
         if(value > maxValue) { maxValue = value;}
-
+        let colors; (options.colors_lock && globalColors) ? colors = globalColors : colors = options.colors;
         let tooltipContent = <div>
-            {data.header.value}: <strong>{data.data[0][data.header.value]}</strong>
+            {data.header.value}: <strong>{data.data[0][data.header.value].toLocaleString('pt-PT')}</strong>
             <br/>
-            {data.header.objective}: <strong>{data.data[0][data.header.objective]}</strong>
+            {data.header.objective}: <strong>{data.data[0][data.header.objective].toLocaleString('pt-PT')}</strong>
         </div>;
 
         return (
@@ -25,13 +25,13 @@ export default function Gauge({data, options}) {
                     {
                         <ReactSpeedometer 
                             forceRender={true}
-                            currentValueText={value + "/" + data.data[0][data.header.objective] + " (" + percentValue + "%" + ")"}
+                            currentValueText={value + " / " + data.data[0][data.header.objective] + " (" + percentValue + "%" + ")"}
                             fluidWidth={true}
                             needleTransitionDuration={0}
                             maxSegmentLabels={0}
                             customSegmentStops={[0, value, maxValue]}
                             segmentColors={[
-                                options.colors[0],
+                                colors[0],
                                 '#f4f6f9'
                             ]}
                             minValue={0}

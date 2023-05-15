@@ -15,7 +15,7 @@ import { getPieLabelListOptions } from "../utils/shared/options/sections/plot/pi
 import { getRadiusOptions } from "../utils/shared/options/sections/plot/pie/radius";
 import SaveButton from "../utils/shared/options/SaveButton";
 
-export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions}) {
+export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, colors}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -62,7 +62,7 @@ export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, iden
             {getLegendOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
             {getRadiusOptions(options, setOptions)}
-            <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.data.length} opacity={false} section={true}/>
+            <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.data.length} opacity={false} section={true} colors={colors}/>
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
@@ -70,7 +70,7 @@ export default function PiePlotComponent({id, data, optionsFlag, plotsInfo, iden
     
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt, <PiePlot data={data} options={options}/>)}
+            {getGraphComponent(needAdapt, <PiePlot data={data} options={options} globalColors={colors}/>)}
             {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )

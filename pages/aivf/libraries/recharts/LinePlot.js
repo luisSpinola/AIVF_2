@@ -6,7 +6,7 @@ import { handleAxes, handleGridOptions, handleLegendOptions } from "./components
 import { getDataFormater } from "../../utils/shared/dataFormatters";
 import { CustomTooltip, getOptionIfExists } from "../../utils/shared/functions";
 
-export default function LinePlot({data, options}){
+export default function LinePlot({data, options, globalColors}){
     const [tooltipCursorWidth, setTooltipCursorWidth] = useState(null);
     const initChart = ref => {
         if(ref){ 
@@ -15,12 +15,12 @@ export default function LinePlot({data, options}){
         }
     };
 
-    const getExtraLine = () => {
+    const getExtraLine = (colors) => {
         let returnArray = [];
         if(data.header.line !== undefined){
             returnArray.push(<YAxis yAxisId="right" orientation="right"/>);
             returnArray.push(<Line legendType="plainline" yAxisId="right" type="linear" 
-                strokeWidth={2} dot={{ stroke: 'black', strokeWidth: 3, r: 1 }} dataKey={data.header.line[0]} stroke={options.colors[data.header.value.length]} 
+                strokeWidth={2} dot={{ stroke: 'black', strokeWidth: 3, r: 1 }} dataKey={data.header.line[0]} stroke={colors[data.header.value.length]} 
             />);
         }
         return returnArray;
@@ -33,8 +33,10 @@ export default function LinePlot({data, options}){
         let axesArray = handleAxes(options.invert_axes, options.yTick, options.scale, data.header.id[0], false);
         let grid = handleGridOptions(options.grid, options.grid_stroke, options.grid_vertical, options.grid_horizontal, options.grid_opacity);
         let legend = handleLegendOptions(options.legend, options.legend_align, options.legend_pos, 'horizontal');
-        let extraLine = getExtraLine();
+        let colors; (options.colors_lock && globalColors) ? colors = globalColors : colors = options.colors;
+        let extraLine = getExtraLine(colors);
         let stacked = null; if(options.stacked) stacked = "a";
+        
 
         let tooltip = <Tooltip content={<CustomTooltip/>} cursor={{ strokeWidth: tooltipCursorWidth, strokeOpacity:'0.5'}} formatter={tickFormatter} isAnimationActive={false}/>;
         let labelList = null;
@@ -48,7 +50,7 @@ export default function LinePlot({data, options}){
                     {legend}
                     {
                         data.header.value.map((_, i) => {
-                            return <Line key={i} yAxisId="left" stackId={stacked} dataKey={data.header.value[i]} type={options.interpolation} fill={options.colors[i]} stroke={options.colors[i]} strokeWidth={options.line_stroke} dot={options.dots} fillOpacity={options.colors_opacity/100} legendType="plainline"> 
+                            return <Line key={i} yAxisId="left" stackId={stacked} dataKey={data.header.value[i]} type={options.interpolation} fill={colors[i]} stroke={colors[i]} strokeWidth={options.line_stroke} dot={options.dots} fillOpacity={options.colors_opacity/100} legendType="plainline"> 
                                 {labelList}
                             </Line>
                         })
@@ -70,7 +72,7 @@ export default function LinePlot({data, options}){
                             {axesArray[1]}
                             {grid}
                             {legend}
-                            <Line yAxisId="left" dataKey={data.header.value[i]} type={options.interpolation} fill={options.colors[i]} stroke={options.colors[i]} strokeWidth={options.line_stroke} dot={options.dots} fillOpacity={options.colors_opacity/100} legendType="plainline">
+                            <Line yAxisId="left" dataKey={data.header.value[i]} type={options.interpolation} fill={colors[i]} stroke={colors[i]} strokeWidth={options.line_stroke} dot={options.dots} fillOpacity={options.colors_opacity/100} legendType="plainline">
                                 {labelList}
                             </Line>
                         </LineChart>

@@ -16,7 +16,7 @@ import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
 import BarPlot from "../libraries/recharts/BarPlot";
 
-export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, multi}) {
+export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, multi, colors}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -78,7 +78,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
             {getLegendOptions(options, setOptions)}
             {getGridOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
-            <ColorSelector option="colors" options={options} setOptions={setOptions} size={colorSize} opacity={true} section={true}/>
+            <ColorSelector option="colors" options={options} setOptions={setOptions} size={colorSize} opacity={true} section={true} colors={colors}/>
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
@@ -86,7 +86,7 @@ export default function BarPlotComponent({id, data, optionsFlag, plotsInfo, iden
     
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt, <BarPlot data={data} options={options}/>)}
+            {getGraphComponent(needAdapt, <BarPlot data={data} options={options} globalColors={colors}/>)}
             {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )

@@ -17,7 +17,7 @@ import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
 import AreaPlot from "../libraries/recharts/AreaPlot";
 
-export default function AreaPlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, multi}) {
+export default function AreaPlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, multi, colors}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -83,7 +83,7 @@ export default function AreaPlotComponent({id, data, optionsFlag, plotsInfo, ide
             {getLegendOptions(options, setOptions)}
             {getGridOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
-            <ColorSelector option="colors" options={options} setOptions={setOptions} size={colorSize} opacity={true} section={true}/>
+            <ColorSelector option="colors" options={options} setOptions={setOptions} size={colorSize} opacity={true} section={true} colors={colors}/>
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
@@ -91,7 +91,7 @@ export default function AreaPlotComponent({id, data, optionsFlag, plotsInfo, ide
     
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt, <AreaPlot data={data} options={options}/>)}
+            {getGraphComponent(needAdapt, <AreaPlot data={data} options={options} globalColors={colors}/>)}
             {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )

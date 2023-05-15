@@ -6,7 +6,7 @@ import GaugeComponent from '../graph_component/GaugeComponent';
 import LinearProgress from '@mui/material/LinearProgress';
 
 
-export default function Performance({data, graphSelected, setGraphSelected, optionsFlag, identifier, previousOptions}) {
+export default function Performance({data, graphSelected, setGraphSelected, optionsFlag, identifier, previousOptions, colors}) {
     const plots = ["Gauge"];
 
     const chooseGraph = () => {
@@ -14,7 +14,7 @@ export default function Performance({data, graphSelected, setGraphSelected, opti
 
         switch(graphSelected){
             case 0:
-                return <GaugeComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions}/>;
+                return <GaugeComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} colors={colors}/>;
             case -1:
                 return <LinearProgress style={{marginLeft: '1rem', marginRight: '1rem'}}/>
             default:

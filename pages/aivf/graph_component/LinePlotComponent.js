@@ -17,7 +17,7 @@ import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
 import LinePlot from "../libraries/recharts/LinePlot";
 
-export default function LinePlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, multi}) {
+export default function LinePlotComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, multi, colors}) {
     const [options, setOptions] = useState({
         //  General
         height: VALUE_HEIGHT,
@@ -82,7 +82,7 @@ export default function LinePlotComponent({id, data, optionsFlag, plotsInfo, ide
             {getLegendOptions(options, setOptions)}
             {getGridOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
-            <ColorSelector option="colors" options={options} setOptions={setOptions} size={colorSize} opacity={true} section={true}/>
+            <ColorSelector option="colors" options={options} setOptions={setOptions} size={colorSize} opacity={true} section={true} colors={colors}/>
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
@@ -90,7 +90,7 @@ export default function LinePlotComponent({id, data, optionsFlag, plotsInfo, ide
     
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt, <LinePlot data={data} options={options}/>)}
+            {getGraphComponent(needAdapt, <LinePlot data={data} options={options} globalColors={colors}/>)}
             {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )

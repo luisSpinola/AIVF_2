@@ -9,7 +9,7 @@ import AreaPlotComponent from '../graph_component/AreaPlotComponent';
 import LinearProgress from '@mui/material/LinearProgress';
 
 
-export default function NNumerical({data, graphSelected, setGraphSelected, optionsFlag, identifier, previousOptions}) {
+export default function NNumerical({data, graphSelected, setGraphSelected, optionsFlag, identifier, previousOptions, colors}) {
     const plots = [BAR_PLOT, LINE_PLOT, AREA_PLOT, TABLE_CHART];
 
     const chooseGraph = () => {
@@ -17,11 +17,11 @@ export default function NNumerical({data, graphSelected, setGraphSelected, optio
 
         switch(graphSelected){
             case 0:
-                return <BarPlotComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} multi={true}/>;
+                return <BarPlotComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} multi={true} colors={colors}/>;
             case 1:
-                return <LinePlotComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} multi={true}/>;
+                return <LinePlotComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} multi={true} colors={colors}/>;
             case 2:
-                return <AreaPlotComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} multi={true}/>;
+                return <AreaPlotComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} multi={true} colors={colors}/>;
             case 3:
                 return <TableComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions}/>;
             case -1:
