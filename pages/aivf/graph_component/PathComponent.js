@@ -11,8 +11,9 @@ import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
 import LocationInterface from "../libraries/leaflet/LocationInterface";
 import { getMapOptions } from "../utils/shared/options/sections/map/mapa";
+import ColorSelector from "../utils/shared/options/sections/plot/ColorSelector";
 
-export default function LocationComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, colors}) {
+export default function PathComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, colors}) {
     const [options, setOptions] = useState({
         //  General
         height: 350,
@@ -21,10 +22,19 @@ export default function LocationComponent({id, data, optionsFlag, plotsInfo, ide
         margin_bottom: 10,
         margin_left: 10,
         margin_right: 10,
+
         colors: VALUE_COLOR,
         colors_lock: true,
+
         map_leaf: 0,
-        sticky_tooltips: false
+        sticky_tooltips: false,
+        
+        //  Route
+        route: "dynamic", //normal, dynamic
+        route_delay: 2000,// 0->4000
+        route_weight: 5,// 1->100
+        route_dashX: 20,// 1->100
+        route_dashY: 40,// 1->100
     })
 
     const[needAdapt, setNeedAdapt] = useState(false);
@@ -43,6 +53,7 @@ export default function LocationComponent({id, data, optionsFlag, plotsInfo, ide
             {getGeneralOptions(options, setOptions, {grouped: false, stacked: false, width: false})}
             {getMapOptions(options, setOptions, {stickyTooltip: true})}
             {getMarginOptions(options, setOptions)}
+            <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.data.length} opacity={false} section={true} colors={colors}/>
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);

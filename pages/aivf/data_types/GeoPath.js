@@ -1,20 +1,20 @@
 import React from 'react';
-import { ERROR_GRAPH_NOT_FOUND, MAP_LOCATION } from '../utils/localization/ptPt';
+import { ERROR_GRAPH_NOT_FOUND, MAP_PATH } from '../utils/localization/ptPt';
 
 //  MUI
 import LinearProgress from '@mui/material/LinearProgress';
-import LocationComponent from '../graph_component/LocationComponent';
+import PathComponent from '../graph_component/PathComponent';
 
 
-export default function GeoLocation({data, graphSelected, setGraphSelected, optionsFlag, identifier, previousOptions, colors}) {
-    const plots = [MAP_LOCATION];
+export default function GeoPath({data, graphSelected, setGraphSelected, optionsFlag, identifier, previousOptions, colors}) {
+    const plots = [MAP_PATH];
 
     const chooseGraph = () => {
         let plotsInfo = [plots, graphSelected, setGraphSelected]
     
         switch(graphSelected){
             case 0:
-                return <LocationComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} multi={true} colors={colors}/>;
+                return <PathComponent id={graphSelected} data={data} optionsFlag={optionsFlag} plotsInfo={plotsInfo} identifier={identifier} previousOptions={previousOptions} multi={true} colors={colors}/>;
             case -1:
                 return <LinearProgress style={{marginLeft: '1rem', marginRight: '1rem'}}/>
             default:

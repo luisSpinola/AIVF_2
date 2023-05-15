@@ -1,9 +1,12 @@
 import React from "react";
 import { OPTIONS_AXES_INVERT } from "../../../../localization/ptPt";
-import { selectInput  } from "../components/inputs";
+import { selectInput, switchInput } from "../components/inputs";
 import { getSectionStructure } from "../components/sectionStructure";
 
-export const getMapOptions = (options, setOptions) => {
+//  MUI
+import Divider from "@mui/material/Divider";
+
+export const getMapOptions = (options, setOptions, {stickyTooltip}) => {
     let details = (
         <React.Fragment>
             {selectInput("Mapa", "map_leaf", options, setOptions, false, 
@@ -24,6 +27,7 @@ export const getMapOptions = (options, setOptions) => {
                     {value:13, name:"Satélite"},
             ]   )
             }
+            {stickyTooltip && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{switchInput("Sticky Tooltip", "sticky_tooltips", options, setOptions, false)}</React.Fragment>}
         </React.Fragment>
     )
     return getSectionStructure("Mapa", details, null);

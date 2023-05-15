@@ -1,3 +1,5 @@
+import Link from "@mui/material/Link";
+
 export const example_one_numerical_1 = {
     header: {
         type:'one_numerical',
@@ -192,11 +194,25 @@ export const example_location = {
         },
     },
     data: [{
-        "nome": <div>Test</div>,
+        "nome": <div>
+            <div>
+                <strong>Some Name</strong>
+            </div>
+            <div style={{cursor:'pointer'}}>
+                <Link underline="hover" onClick={() => {window.open("", '_blank')}}>45268</Link>
+            </div>
+        </div>,
         "coords": [38.993932, -9.125304],
     },
     {
-        "nome": "test2",
+        "nome": <div>
+            <div>
+                <strong>Some Name 2</strong>
+            </div>
+            <div style={{cursor:'pointer'}}>
+                <Link underline="hover" onClick={() => {window.open("", '_blank')}}>45268</Link>
+            </div>
+        </div>,
         "coords": [41.234517,-8.524543],
     }]
 }

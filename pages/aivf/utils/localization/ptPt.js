@@ -16,6 +16,7 @@ export const LINE_PLOT = "Linha";
 export const AREA_PLOT = "Área";
 export const TABLE_CHART = "Tabela";
 export const MAP_LOCATION = "Localização";
+export const MAP_PATH = "Rota";
 
 //  PLOTS OPTIONS
 export const OPTIONS_SECTION_GENERAL = "Geral";

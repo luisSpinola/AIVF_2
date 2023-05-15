@@ -13,11 +13,11 @@ export default function GraphCard({identifier, graphData, title, colors}){
     const [showIcons, setShowIcons] = useState(false);
     return (
         <Card className="custom-card" onContextMenu={(e)=> e.preventDefault()}>
-            <CardHeader onMouseEnter={() => setShowIcons(true)} onMouseLeave={() => setShowIcons(false)} 
+            <CardHeader sx={{maxHeight:'1.5rem'}} onMouseEnter={() => setShowIcons(true)} onMouseLeave={() => setShowIcons(false)} 
                 title={<Typography sx={{fontWeight:'bold'}} variant='body2'>{title}</Typography>} className="custom-card-header" action={
                 <React.Fragment>
                     { showIcons && 
-                        <IconButton sx={{marginRight:'.3rem'}} size="small" onClick={() => setOptions(!options)}>
+                        <IconButton sx={{marginTop:'-.8rem'}} size="small" onClick={() => setOptions(!options)}>
                             <SettingsIcon fontSize="0.8rem"/>
                         </IconButton>
                     }
