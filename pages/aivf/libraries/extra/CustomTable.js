@@ -7,12 +7,14 @@ export default function CustomTable({data, options}) {
     const [columns, setColumns] = useState(null);
 
     useEffect(() => {
+        assembleData();
+    }, [,data])
+
+    const assembleData = () => {
         let rows1 = [];
         for(let i=0; i<data.data.length; i++){
             rows1.push({id:i,...data.data[i]});
         }
-
-
         let columns1 = [];
         columns1.push({
             field: data.header.id[0], headerName: data.header.id[0], renderHeader: (params) => (<strong style={{fontSize:'0.8rem'}}>{data.header.id[0]}</strong>),
@@ -30,16 +32,13 @@ export default function CustomTable({data, options}) {
                 })
             }
         }
-
         setRows(rows1);
         setColumns(columns1);
-
         setDataReady(true);
-    }, [])
+    }
 
     const getPlot = () => {
         let margin = {top:options.margin_top, right:options.margin_right, left:options.margin_left, bottom:options.margin_bottom};
-
         return (
         <div style={{maxHeight:options.height}}>
             <div style={{paddingTop:margin.top, paddingBottom:margin.bottom, paddingLeft:margin.left, paddingRight:margin.right}}>

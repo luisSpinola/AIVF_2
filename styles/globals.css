@@ -9,3 +9,4 @@
     margin-top: 1rem;
     min-height: '250px';
 }
+.custom-card:focus {outline:none;border: none;}

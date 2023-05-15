@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //  RECHARTS
 import { ResponsiveContainer, BarChart, Bar, LabelList, Tooltip, ComposedChart, YAxis, Line } from "recharts";
 import { handleAxes, handleGridOptions, handleLegendOptions } from "./components/components";

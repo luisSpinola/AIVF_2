@@ -124,3 +124,56 @@ export const example_performance_1 = {
         }
     ]
 };
+
+export const example_timeseries_1 = 
+{
+    "header":{
+        "type": "time_series",
+        "id": ["date"],
+        "value": ["value_name1","value_name2","value_name3"]
+    },
+    "data": [
+        { 
+            "date": new Date("05/05/2019"),
+            "value_name1": 4000,
+            "value_name2": 9000,
+            "value_name3": 1000
+        },
+        { 
+            "date": new Date("05/03/2019"),
+            "value_name1": 2000,
+            "value_name2": 8000,
+            "value_name3": 6000
+        },
+        { 
+            "date": new Date("05/06/2019"),
+            "value_name1": 5000,
+            "value_name2": 1000,
+            "value_name3": 7000
+        },
+        { 
+            "date": new Date("06/05/2019"),
+            "value_name1": 4000,
+            "value_name2": 9000,
+            "value_name3": 1000
+        },
+        { 
+            "date": new Date("06/08/2019"),
+            "value_name1": 8000,
+            "value_name2": 7000,
+            "value_name3": 1000
+        },
+        { 
+            "date": new Date("06/06/2019"),
+            "value_name1": 5000,
+            "value_name2": 1000,
+            "value_name3": 7000
+        },
+        { 
+            "date": new Date("07/08/2019"),
+            "value_name1": 8000,
+            "value_name2": 7000,
+            "value_name3": 1000
+        }
+    ]
+}

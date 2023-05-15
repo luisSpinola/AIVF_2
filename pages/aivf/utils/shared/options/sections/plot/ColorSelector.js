@@ -70,6 +70,7 @@ export default function ColorSelector({option, options, setOptions, size, opacit
         return <React.Fragment>
             {colors && switchInput("Esquema Geral", "colors_lock", options, setOptions, false)}
             {!options.colors_lock && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{colorsDisplay}</React.Fragment>}
+            {!colors && colorsDisplay}
             
             {opacity && 
                 <React.Fragment>

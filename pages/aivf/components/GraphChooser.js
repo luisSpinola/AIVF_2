@@ -6,11 +6,10 @@ import { ERROR_TYPE_NOT_FOUND } from '../utils/localization/ptPt';
 import OneNumerical from '../data_types/One_Numerical';
 import NNumerical from '../data_types/N_Numerical';
 import Performance from '../data_types/Performance';
+import TimeSeries from '../data_types/TimeSeries';
 import { SAVE_CACHE_NAME, SAVE_MODE } from '../utils/default/defaults';
 import { getCachedOptions } from '../utils/shared/options/options';
 import { LinearProgress } from '@mui/material';
-
-
 
 export default function GraphChooser({identifier, data, options, colors}) {
     const [isOptionsLoaded, setIsOptionsLoaded] = useState(false);
@@ -53,7 +52,7 @@ export default function GraphChooser({identifier, data, options, colors}) {
             case "n_numerical":
                 return <NNumerical optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions} colors={colors}/>;
             case "time_series":
-                break;
+                return <TimeSeries optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions} colors={colors}/>
             case "double_numerical":
                 break;
             case "performance":
