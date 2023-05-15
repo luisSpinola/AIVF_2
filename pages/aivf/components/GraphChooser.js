@@ -10,6 +10,7 @@ import TimeSeries from '../data_types/TimeSeries';
 import { SAVE_CACHE_NAME, SAVE_MODE } from '../utils/default/defaults';
 import { getCachedOptions } from '../utils/shared/options/options';
 import { LinearProgress } from '@mui/material';
+import GeoLocation from '../data_types/GeoLocation';
 
 export default function GraphChooser({identifier, data, options, colors}) {
     const [isOptionsLoaded, setIsOptionsLoaded] = useState(false);
@@ -57,6 +58,8 @@ export default function GraphChooser({identifier, data, options, colors}) {
                 break;
             case "performance":
                 return <Performance optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions} colors={colors}/>
+            case "geo_location":
+                return <GeoLocation optionsFlag={options} data={data} graphSelected={selected} setGraphSelected={setSelectedTop} identifier={identifier} previousOptions={previousOptions} colors={colors}/>;
             default:
                 return <React.Fragment>{ERROR_TYPE_NOT_FOUND}</React.Fragment>;
         }

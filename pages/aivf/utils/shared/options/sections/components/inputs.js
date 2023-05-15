@@ -15,7 +15,7 @@ const LABEL_COLOR = 'rgb(0, 0, 0, 0.6)';
 
 export const sliderInput = (label, option, options, setOptions, {min, max, step}, disable) => {
     return (
-        <React.Fragment>
+        <div style={{marginBottom:'-0.5rem'}}>
             <div>
                 <Typography style={{color:LABEL_COLOR}} variant='subtitle2'>
                     {label}
@@ -36,7 +36,7 @@ export const sliderInput = (label, option, options, setOptions, {min, max, step}
                     />
                 </div>
             </div>
-        </React.Fragment>
+        </div>
     )
 }
 

@@ -31,7 +31,7 @@ export const CustomTooltip = ({ active, payload, label}) => {
             <div style={{outlineStyle: 'none', boxShadow: 'none', borderColor: 'transparent', fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0 5px 5px rgba(129, 124, 124, 0.7)', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
                 <div>{label}</div>
                 {payload.map((elem, index) => {
-                    return <div key={index}>{elem.dataKey}: <strong>{elem.value}</strong></div>
+                    return <div key={index}>{elem.dataKey}: <strong>{elem.value.toLocaleString('pt-PT')}</strong></div>
                 })}
                 
             </div>

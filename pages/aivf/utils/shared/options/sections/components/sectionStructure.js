@@ -6,8 +6,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const getSectionStructure = (title, details, switchComponent) => {
     return (
-        <Accordion disableGutters>
-            <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+        <Accordion disableGutters sx={{ borderRadius: '4px', marginBottom:'0.3rem', backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
+            <AccordionSummary sx={{fontSize:'0.9rem'}} expandIcon={<ExpandMoreIcon/>}>
                 <div>{title} {switchComponent}</div>
             </AccordionSummary>
             <AccordionDetails>
