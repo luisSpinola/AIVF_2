@@ -47,7 +47,6 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
         }
     },[])
 
-
     const sidebarOptions = () => {
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions, {grouped: false, stacked: false, width: false})}

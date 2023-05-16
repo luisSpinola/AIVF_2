@@ -1,36 +1,12 @@
 import React from "react";
-import styled from "styled-components";
 
 //  LEAFLET
-import { TileLayer, MapContainer, Marker, Popup, Tooltip} from "react-leaflet";
+import { TileLayer, MapContainer, Marker } from "react-leaflet";
 import { MAP_VECTOR_ARRAY } from "../../utils/default/defaults";
-import { blueIcon, greenIcon } from "./Icons";
-
-const StyledPop = styled(Popup)`
-  .leaflet-popup-content-wrapper {
-    border-radius: 5 !important;
-    background-color: rgba(255, 255, 255, 0.8) !important;
-    fontSize:0.85rem !important;
-    padding:0.001rem !important;
-    boxShadow: 0 5px 5px rgba(129, 124, 124, 0.7) !important;
-  }
-
-  .leaflet-popup-tip-container {
-    visibility: hidden;
-  }
-`;
-
-const StyledTooltip = styled(Tooltip)`
-    padding:2px !important;
-    font-size:0.7rem;
-    border-radius: 5 !important;
-    background-color: rgba(255, 255, 255, 0.7) !important;
-    border-left-color: rgba(0, 0, 0, 0) !important;
-    border-right-color: rgba(0, 0, 0, 0) !important;
-`;
+import { blueIcon } from "./Icons";
+import { StyledPop, StyledTooltip } from "./StyledComponents";
 
 export default function Location({data, options, globalColors}) {
-
     const getPlot = () => {
         let margin = {top:options.margin_top, right:options.margin_right, left:options.margin_left, bottom:options.margin_bottom};
         return (
