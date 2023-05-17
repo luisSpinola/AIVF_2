@@ -1,4 +1,4 @@
-import { example_one_numerical_1, example_n_numerical_1, example_n_numerical_2, example_performance_1, example_timeseries_1, example_location } from "./examples/examples";
+import { example_one_numerical_1, example_n_numerical_1, example_n_numerical_2, example_performance_1, example_timeseries_1, example_location, example_performance_2 } from "./examples/examples";
 import GraphCard from "./examples/GraphCard";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -41,8 +41,9 @@ export default function Main() {
                 <GraphCard graphData={example_n_numerical_2} title={"n_2"} identifier={[...identifierStart, 5]} colors={main_color_scheme}/>
 
                 <GraphCard graphData={example_performance_1} title={"performance_1"} identifier={[...identifierStart, 6]} colors={main_color_scheme}/>
+                <GraphCard graphData={example_performance_2} title={"performance_2"} identifier={[...identifierStart, 7]} colors={main_color_scheme}/>
 
-                <GraphCard graphData={example_timeseries_1} title={"timeseries_1"} identifier={[...identifierStart, 7]} colors={main_color_scheme}/>
+                <GraphCard graphData={example_timeseries_1} title={"timeseries_1"} identifier={[...identifierStart, 8]} colors={main_color_scheme}/>
 
                 
             

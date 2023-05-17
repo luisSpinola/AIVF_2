@@ -176,7 +176,7 @@ export default function SaveButton({id, options, identifier, plotsInfo}){
  
     return (
         <div>
-            <div style={{display:'flex', flexDirection:'row-reverse', margin:'1rem'}}>
+            <div style={{display:'flex', flexDirection:'row-reverse', margin:'0.5rem'}}>
                 <Tooltip title={tooltipMessage}>
                     <div style={{position: 'relative'}}>
                         <Button disabled={isSaving} onClick={onSave} style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}} variant="contained"> 

@@ -115,14 +115,29 @@ export const example_n_numerical_2 = {
 
 export const example_performance_1 = {
     header:{
-        "type":"performance",
-        "value":["Valor"],
-        "objective":["Meta"],
+        type:"performance",
+        value:["Valor"],
+        objective:["Meta"]
     },
     data:[
         {
-            "Valor": 4547,
-            "Meta":  12000,
+            Valor: 4547,
+            Meta:  12000,
+        }
+    ]
+};
+export const example_performance_2 = {
+    header:{
+        type:"performance",
+        value:["Valor"],
+        objective:["Meta"],
+        expected: ["Esperado"]
+    },
+    data:[
+        {
+            Valor: 4547,
+            Meta:  12000,
+            Esperado: 5649
         }
     ]
 };

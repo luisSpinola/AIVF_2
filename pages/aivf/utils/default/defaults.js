@@ -4,7 +4,8 @@ export const SAVE_CACHE_NAME = "GRAPH_OPTIONS";
 export const SAVE_TIMER = 5; // number of seconds to periodically check for changes
 
 //  COLOR
-export const VALUE_COLOR = ["#1976d2", "#7eb0d5", "#b2e061", "#bd7ebe", "#ffb55a", "#ffee65", "#beb9db", "#fdcce5", "#8bd3c7"];
+export const VALUE_COLOR = ['#7dba00','#00560E','#ed7d31','#ffffb2','#fed976','#fd8d3c','#f03b20','#bd0026'];
+//["#1976d2", "#7eb0d5", "#b2e061", "#bd7ebe", "#ffb55a", "#ffee65", "#beb9db", "#fdcce5", "#8bd3c7"];
 //  GENERAL
 export const VALUE_HEIGHT = 250;
 export const VALUE_INVERT_AXES = false;
