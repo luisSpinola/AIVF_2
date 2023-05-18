@@ -6,7 +6,7 @@ import { getSectionStructure } from "../components/sectionStructure";
 //  MUI
 import Divider from "@mui/material/Divider";
 
-export const getGeneralOptions = (options, setOptions, {grouped, stacked, width}) => {
+export const getGeneralOptions = (options, setOptions, {grouped, stacked}) => {
     let details = (
         <React.Fragment>
             {sliderInput(OPTIONS_HEIGHT, "height", options, setOptions, {min: 100, max: 1500, step:50}, false)}
@@ -20,11 +20,6 @@ export const getGeneralOptions = (options, setOptions, {grouped, stacked, width}
                 <Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>
                 {switchInput(OPTIONS_STACKED, "stacked", options, setOptions, false)}
             </React.Fragment>}
-
-            {width && <React.Fragment>
-                {sliderInput("Largura", "width", options, setOptions, {min: 100, max: 1500, step:50}, false)}
-            </React.Fragment>}
-            
         </React.Fragment>
     )
     return getSectionStructure(OPTIONS_SECTION_GENERAL, details, null);

@@ -11,12 +11,13 @@ import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
 import Gauge from "../libraries/extra/Gauge";
 import ColorSelector from "../utils/shared/options/sections/plot/ColorSelector";
+import { getGaugeOptions } from "../utils/shared/options/sections/plot/gauge/gauge";
 
 export default function GaugeComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, colors}) {
     const [options, setOptions] = useState({
         //  General
-        height: 250,
-        width: 400,
+        height: 220,
+        width: 300,
         //  Margin
         margin_top: 0,
         margin_bottom: 0,
@@ -24,6 +25,8 @@ export default function GaugeComponent({id, data, optionsFlag, plotsInfo, identi
         margin_right: 0,
         colors: VALUE_COLOR,
         colors_lock: true,
+        info: true,
+        info_top: false,
     })
 
     const[needAdapt, setNeedAdapt] = useState(false);
@@ -39,7 +42,7 @@ export default function GaugeComponent({id, data, optionsFlag, plotsInfo, identi
 
     const sidebarOptions = () => {
         let sections = <React.Fragment>
-            {getGeneralOptions(options, setOptions, {grouped: false, stacked: false, width: true})}
+            {getGaugeOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
             <ColorSelector option="colors" options={options} setOptions={setOptions} size={1} opacity={false} section={true} colors={colors}/>
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>

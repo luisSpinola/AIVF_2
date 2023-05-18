@@ -25,10 +25,11 @@ export const getOptionIfExists = (value) => {
     return false;
 }
 
+const tooltipStyle= {outlineStyle: 'none', borderColor: 'transparent', fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0px 0px 5px 0px #B8B8B8', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.8)'}
 export const CustomTooltip = ({ active, payload, label}) => {
     if (active && payload && payload.length) {
         return (
-            <div style={{outlineStyle: 'none', boxShadow: 'none', borderColor: 'transparent', fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0 5px 5px rgba(129, 124, 124, 0.7)', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+            <div style={tooltipStyle}>
                 <div>{label}</div>
                 {payload.map((elem, index) => {
                     return <div key={index}>{elem.dataKey}: <strong>{elem.value.toLocaleString('pt-PT')}</strong></div>
@@ -40,11 +41,19 @@ export const CustomTooltip = ({ active, payload, label}) => {
     return null;
 };
 
+export const CustomTooltipForDiv = (content, selected) => {
+    if(selected){
+        return <div style={{ 
+            fontSize:'0.85rem', padding:'0.5rem', 
+            boxShadow: '0px 0px 5px 0px #B8B8B8', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 1)'}}>
+            {content}
+        </div>
+    }
 
-
-export const CustomTooltipForDiv = (content) => {
     return (
-        <div style={{fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0 5px 5px rgba(129, 124, 124, 0.7)', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+        <div style={{ 
+            fontSize:'0.85rem', padding:'0.5rem', 
+            boxShadow: '0px 0px 5px 0px #B8B8B8', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.5)'}}>
             {content}
         </div>
     );

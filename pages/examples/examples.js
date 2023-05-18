@@ -135,9 +135,9 @@ export const example_performance_2 = {
     },
     data:[
         {
-            Valor: 4547,
-            Meta:  12000,
-            Esperado: 5649
+            Valor: 11547,
+            Esperado: 12547,
+            Meta:  15000
         }
     ]
 };

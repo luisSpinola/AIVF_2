@@ -9,6 +9,9 @@ import * as _ from 'lodash';
 const theme = createTheme({
     palette: {
         //mode: 'dark',
+        secondary: {
+            main: '#121212',
+        }
     },
 });
 
@@ -31,19 +34,19 @@ export default function Main() {
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <div className="custom-flex-container">
-                <GraphCard graphData={example_location} title={"location_1"} identifier={[...identifierStart, 8]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_location} title={"location_1"} identifier={[...identifierStart, 8]} colors={main_color_scheme}/>
 
-                <GraphCard graphData={example_one_numerical_1} title={"one_1"} identifier={[...identifierStart, 1]} colors={main_color_scheme}/>
-                <GraphCard graphData={example_one_numerical_1} title={"one_2"} identifier={[...identifierStart, 2]} colors={main_color_scheme}/>
-                <GraphCard graphData={example_one_numerical_1} title={"one_3"} identifier={[...identifierStart, 3]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_one_numerical_1} title={"one_1"} identifier={[...identifierStart, 1]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_one_numerical_1} title={"one_2"} identifier={[...identifierStart, 2]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_one_numerical_1} title={"one_3"} identifier={[...identifierStart, 3]} colors={main_color_scheme}/>
 
-                <GraphCard graphData={example_n_numerical_1} title={"n_1"} identifier={[...identifierStart, 4]} colors={main_color_scheme}/>
-                <GraphCard graphData={example_n_numerical_2} title={"n_2"} identifier={[...identifierStart, 5]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_n_numerical_1} title={"n_1"} identifier={[...identifierStart, 4]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_n_numerical_2} title={"n_2"} identifier={[...identifierStart, 5]} colors={main_color_scheme}/>
 
-                <GraphCard graphData={example_performance_1} title={"performance_1"} identifier={[...identifierStart, 6]} colors={main_color_scheme}/>
-                <GraphCard graphData={example_performance_2} title={"performance_2"} identifier={[...identifierStart, 7]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card-2"} graphData={example_performance_1} title={"performance_1"} identifier={[...identifierStart, 6]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card-2"} graphData={example_performance_2} title={"performance_2"} identifier={[...identifierStart, 7]} colors={main_color_scheme}/>
 
-                <GraphCard graphData={example_timeseries_1} title={"timeseries_1"} identifier={[...identifierStart, 8]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_timeseries_1} title={"timeseries_1"} identifier={[...identifierStart, 8]} colors={main_color_scheme}/>
 
                 
             

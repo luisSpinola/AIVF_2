@@ -1,6 +1,5 @@
 import React from "react";
-import { OPTIONS_SECTION_LABELLIST} from "../../../../../localization/ptPt";
-import { sliderInput, switchInput, updateOptions } from "../../components/inputs";
+import { sliderInput, switchInput } from "../../components/inputs";
 import { getSectionStructure } from "../../components/sectionStructure";
 
 //  MUI
