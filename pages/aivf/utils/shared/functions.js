@@ -45,7 +45,7 @@ export const CustomTooltipForDiv = (content, selected) => {
     if(selected){
         return <div style={{ 
             fontSize:'0.85rem', padding:'0.5rem', 
-            boxShadow: '0px 0px 5px 0px #B8B8B8', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 1)'}}>
+            boxShadow: '0px 0px 5px 0px #B8B8B8', borderRadius: '5px', backgroundColor: 'rgba(235, 235, 235, 1)'}}>
             {content}
         </div>
     }

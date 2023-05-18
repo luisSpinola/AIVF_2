@@ -135,8 +135,8 @@ export const example_performance_2 = {
     },
     data:[
         {
-            Valor: 11547,
-            Esperado: 12547,
+            Valor: 5547,
+            Esperado: 7547,
             Meta:  15000
         }
     ]

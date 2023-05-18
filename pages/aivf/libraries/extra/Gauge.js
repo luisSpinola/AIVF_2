@@ -19,7 +19,7 @@ export default function Gauge({data, options, globalColors}) {
         let colors; (options.colors_lock && globalColors) ? colors = globalColors : colors = options.colors;
 
         let customStops = [0, value, maxValue];
-        let segmentColors = [colors[0], '#f4f6f9'];
+        let segmentColors = [colors[0], '#dcdfe3'];
         let plotText = "";
         
         let expected = false;
@@ -40,6 +40,7 @@ export default function Gauge({data, options, globalColors}) {
         if(showObjective){
             chipObjectiveColor = "secondary";
         } else {
+            
             segmentColors = [colors[0]];
             customStops = [0, data.data[0][data.header.expected]];
             maxValue = data.data[0][data.header.expected];
