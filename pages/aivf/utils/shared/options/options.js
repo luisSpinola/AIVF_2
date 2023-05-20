@@ -16,7 +16,7 @@ export const handleSidebarOptions = (optionsFlag, sections, plotsInfo) => {
         <Drawer 
             PaperProps={{
                 sx: {
-                    fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0 5px 5px rgba(129, 124, 124, 0.7)', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.7)'
+                    fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0 5px 5px rgba(129, 124, 124, 0.7)', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.1)'
                 }
             }}
             anchor="right" open={optionsFlag[0]} onClose={() => optionsFlag[1](false)}>
@@ -27,7 +27,7 @@ export const handleSidebarOptions = (optionsFlag, sections, plotsInfo) => {
                         <CloseIcon fontSize="0.8rem"/>
                     </IconButton>
                 </div>
-                <div style={{marginTop:'-0.5rem'}}>
+                <div style={{backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '5px', marginRight:'1rem', marginTop:'0.5rem', marginLeft:'1rem', marginRight:'1rem', marginBottom:'1rem'}}>
                     {getPlotsSelection(plotsInfo)}
                 </div>
             </div>
@@ -39,21 +39,19 @@ export const handleSidebarOptions = (optionsFlag, sections, plotsInfo) => {
 
 export const getPlotsSelection = (plotsInfo) => {
     return (
-        <div style={{minWidth:"12rem", margin:'1rem'}}>
-            <FormControl size="small" fullWidth variant="filled">
-                <InputLabel sx={{color:'white'}} id="demo-simple-select-standard-label">{PLOT_SELECTION}</InputLabel>
-                <Select labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard" sx={{fontSize:'0.9rem'}} value={plotsInfo[1]} onChange={(e) => plotsInfo[2](e.target.value)}>
-                    {plotsInfo[0].map((elem, index) => {
-                        return (
-                            <MenuItem sx={{fontSize:'0.9rem'}} key={index} value={index}>
-                                {elem}
-                            </MenuItem>
-                        )
-                    })}
-                </Select>
-            </FormControl>
-        </div>
+        <FormControl size="small" fullWidth variant="filled" sx={{borderRadius:'5px'}}>
+            <InputLabel id="demo-simple-select-standard-label" sx={{borderRadius:'5px'}}>{PLOT_SELECTION}</InputLabel>
+            <Select disableUnderline labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard" sx={{fontSize:'0.9rem', borderRadius:'5px'}} value={plotsInfo[1]} onChange={(e) => plotsInfo[2](e.target.value)}>
+                {plotsInfo[0].map((elem, index) => {
+                    return (
+                        <MenuItem sx={{fontSize:'0.9rem', borderRadius:'5px'}} key={index} value={index}>
+                            {elem}
+                        </MenuItem>
+                    )
+                })}
+            </Select>
+        </FormControl>
     )
 }
 

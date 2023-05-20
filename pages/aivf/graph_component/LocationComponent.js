@@ -9,7 +9,7 @@ import { getGeneralOptions } from "../utils/shared/options/sections/plot/general
 import { getMarginOptions } from "../utils/shared/options/sections/plot/margin";
 import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
-import LocationInterface from "../libraries/leaflet/LocationInterface";
+import MapInterface from "../libraries/leaflet/MapInterface";
 import { getMapOptions } from "../utils/shared/options/sections/map/mapa";
 
 export default function LocationComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, colors}) {
@@ -50,7 +50,7 @@ export default function LocationComponent({id, data, optionsFlag, plotsInfo, ide
     
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt, <LocationInterface data={data} options={options} globalColors={colors}/>)}
+            {getGraphComponent(needAdapt, <MapInterface data={data} options={options} globalColors={colors}/>)}
             {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )

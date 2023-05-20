@@ -1,4 +1,4 @@
-import { example_one_numerical_1, example_n_numerical_1, example_n_numerical_2, example_performance_1, example_timeseries_1, example_location, example_performance_2 } from "./examples/examples";
+import { example_one_numerical_1, example_n_numerical_1, example_n_numerical_2, example_performance_1, example_timeseries_1, example_location, example_performance_2, example_path } from "./examples/examples";
 import GraphCard from "./examples/GraphCard";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -34,7 +34,8 @@ export default function Main() {
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <div className="custom-flex-container">
-                <GraphCard class1={"custom-card"} graphData={example_location} title={"location_1"} identifier={[...identifierStart, 8]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_location} title={"location_1"} identifier={[...identifierStart, 9]} colors={main_color_scheme}/>
+                <GraphCard class1={"custom-card"} graphData={example_path} title={"path_1"} identifier={[...identifierStart, 10]} colors={main_color_scheme}/>
 
                 <GraphCard class1={"custom-card"} graphData={example_one_numerical_1} title={"one_1"} identifier={[...identifierStart, 1]} colors={main_color_scheme}/>
                 <GraphCard class1={"custom-card"} graphData={example_one_numerical_1} title={"one_2"} identifier={[...identifierStart, 2]} colors={main_color_scheme}/>

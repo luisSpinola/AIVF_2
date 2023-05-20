@@ -9,9 +9,10 @@ import { getGeneralOptions } from "../utils/shared/options/sections/plot/general
 import { getMarginOptions } from "../utils/shared/options/sections/plot/margin";
 import SaveButton from "../utils/shared/options/SaveButton";
 //  PLOTS
-import LocationInterface from "../libraries/leaflet/LocationInterface";
+import MapInterface from "../libraries/leaflet/MapInterface";
 import { getMapOptions } from "../utils/shared/options/sections/map/mapa";
 import ColorSelector from "../utils/shared/options/sections/plot/ColorSelector";
+import { getRouteOptions } from "../utils/shared/options/sections/map/route";
 
 export default function PathComponent({id, data, optionsFlag, plotsInfo, identifier, previousOptions, colors}) {
     const [options, setOptions] = useState({
@@ -48,11 +49,17 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
     },[])
 
     const sidebarOptions = () => {
+        let colors_length = 0;
+        if(data.header.routes){
+            colors_length = data.header.routes.length;
+        }
+
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions, {grouped: false, stacked: false, width: false})}
             {getMapOptions(options, setOptions, {stickyTooltip: true})}
+            {getRouteOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
-            <ColorSelector option="colors" options={options} setOptions={setOptions} size={data.data.length} opacity={false} section={true} colors={colors}/>
+            <ColorSelector option="colors" options={options} setOptions={setOptions} size={colors_length} opacity={false} section={true} colors={colors}/>
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>
         return handleSidebarOptions(optionsFlag, sections, plotsInfo);
@@ -60,7 +67,7 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
     
     return(
         <React.Fragment>
-            {getGraphComponent(needAdapt, <LocationInterface data={data} options={options} globalColors={colors}/>)}
+            {getGraphComponent(needAdapt, <MapInterface data={data} options={options} globalColors={colors}/>)}
             {optionsFlag[0] && sidebarOptions()}
         </React.Fragment>
     )

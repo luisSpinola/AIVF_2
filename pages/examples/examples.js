@@ -231,3 +231,35 @@ export const example_location = {
         "coords": [41.234517,-8.524543],
     }]
 }
+
+export const example_path = {
+    header:{
+        type: "geo_path",
+        coords: ["coords"],
+        routes: ["Rotas_1", "Rotas_2"],
+        state: ["Brigades"],
+        view_port:{
+            longitude: -9.125304,
+            latitude: 38.993932,
+            zoom: 8,
+            pitch: 0,
+            bearing: 0
+        },
+    },
+    routes: {
+        Rotas_1:[
+            {
+                "id": 1,
+                "info": <div>Rota 1_1</div>,
+                "path": [[38.993932, -9.125304], [41.234517, -8.524543]],
+            },
+        ],
+        Rotas_2:[
+            {
+                "id": 1,
+                "info": <div>Rota 2_1</div>,
+                "path": [[38.367942, -8.529224], [38.646182, -7.828029]],
+            }
+        ]
+    }
+}

@@ -3,8 +3,8 @@ import React from "react";
 //  LEAFLET
 import { TileLayer, MapContainer, Marker } from "react-leaflet";
 import { MAP_VECTOR_ARRAY } from "../../utils/default/defaults";
-import { blueIcon } from "./Icons";
-import { StyledPop, StyledTooltip } from "./StyledComponents";
+import { blueIcon } from "./components/Icons";
+import { StyledPop, StyledTooltip } from "./components/StyledComponents";
 
 export default function Location({data, options, globalColors}) {
     const getPlot = () => {
