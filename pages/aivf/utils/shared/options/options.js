@@ -55,7 +55,6 @@ export const getPlotsSelection = (plotsInfo) => {
     )
 }
 
-
 export const getCachedOptions = async (setPreviousOptions, setSelected, setIsOptionsLoaded, identifier, selected) => {
     if (typeof caches === 'undefined') return;
     const cacheStorage = await caches.open(SAVE_CACHE_NAME);

@@ -235,9 +235,10 @@ export const example_location = {
 export const example_path = {
     header:{
         type: "geo_path",
-        coords: ["coords"],
-        routes: ["Rotas_1", "Rotas_2"],
-        state: ["Brigades"],
+        routes: ["Rota Planeada", "Rota Completada"],
+        state: ["Brigadas"], 
+        icon_blue: "Entidade", icon_green: "Entidade Inspecionada", icon_gray: "Partida/Chegada",
+        vehicle_green: "", vehicle_gray: "", 
         view_port:{
             longitude: -9.125304,
             latitude: 38.993932,
@@ -247,19 +248,63 @@ export const example_path = {
         },
     },
     routes: {
-        Rotas_1:[
+        "Rota Planeada":[
             {
                 "id": 1,
                 "info": <div>Rota 1_1</div>,
                 "path": [[38.993932, -9.125304], [41.234517, -8.524543]],
             },
+            {
+                "id": 2,
+                "info": <div>Rota 2_1</div>,
+                "path": [[39.993932, -9.125304], [41.234517, -8.524543]],
+            },
         ],
-        Rotas_2:[
+        "Rota Completada":[
             {
                 "id": 1,
-                "info": <div>Rota 2_1</div>,
+                "info": <div>Rota 1_2</div>,
                 "path": [[38.367942, -8.529224], [38.646182, -7.828029]],
             }
         ]
-    }
+    },
+    icon_blue: [
+        {
+            "id": 1,
+            "order": 1,
+            "info": <div>Icon 1_1</div>,
+            "coords": [38.993932, -9.125304]
+        },
+        {
+            "id": 1,
+            "order": 3,
+            "info": <div>Icon 1_3</div>,
+            "coords": [41.234517, -8.524543]
+        }
+    ],
+    icon_gray: [
+        {
+            "id": 1,
+            "order": "Partida",
+            "info": <div>Icon 1_0</div>,
+            "coords": [38.893932, -9.125304]
+        },
+    ],
+    icon_green: [
+        {
+            "id": 1,
+            "order": 1,
+            "info": <div>Icon Completed 1_1</div>,
+            "coords": [38.993932, -9.125304]
+        },
+    ],
+
+    vehicle_green: [
+        {
+            "id": 1,
+            "info": <div>Car_1</div>,
+            "coordsF": [38.993932, -9.125304],
+            "coordsI": [38.993932, -9.125304],
+        }
+    ]
 }

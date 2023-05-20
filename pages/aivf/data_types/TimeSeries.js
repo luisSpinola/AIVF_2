@@ -37,7 +37,7 @@ export default function TimeSeries({data, graphSelected, setGraphSelected, optio
 
         const sortArray = tempArray.sort((a, b) => b[data.header.id] < a[data.header.id] ? 1: -1);
         let returnArray = [];
-        returnArray['header'] = _.cloneDeep(data.header);;
+        returnArray['header'] = _.cloneDeep(data.header);
         returnArray['data'] = sortArray;
         setFormattedData(returnArray);
     }
