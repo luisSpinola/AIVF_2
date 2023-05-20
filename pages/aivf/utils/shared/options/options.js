@@ -16,7 +16,7 @@ export const handleSidebarOptions = (optionsFlag, sections, plotsInfo) => {
         <Drawer 
             PaperProps={{
                 sx: {
-                    fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0 5px 5px rgba(129, 124, 124, 0.7)', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    fontSize:'0.85rem', padding:'0.5rem',boxShadow: '0 5px 5px rgba(129, 124, 124, 0.7)', borderRadius: '5px', backgroundColor: 'rgba(255, 255, 255, 0.35)'
                 }
             }}
             anchor="right" open={optionsFlag[0]} onClose={() => optionsFlag[1](false)}>
