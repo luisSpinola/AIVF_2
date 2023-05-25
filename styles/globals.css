@@ -29,3 +29,12 @@
 
 .custom-card:focus {outline:none;border: none;}
 
+
+g:focus {
+    outline: none;
+}
+  
+path:focus {
+    outline: none;
+}
+

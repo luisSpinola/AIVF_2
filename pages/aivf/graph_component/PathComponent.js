@@ -30,6 +30,7 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
         map_leaf: 0,
         permanent_tooltips: false,
         permanent_tooltips_order: true,
+        permanent_tooltips_cars: true,
         permanent_tooltips_info: false,
         
         //  Route
@@ -53,7 +54,7 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
     const sidebarOptions = () => {
         let colors_length = 0;
         if(data.header.routes){
-            colors_length = data.header.routes.length;
+            colors_length = data.header.routes.length+1;
         }
 
         let sections = <React.Fragment>

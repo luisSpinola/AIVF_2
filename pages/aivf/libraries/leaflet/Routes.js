@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 //  LEAFLET
-import { TileLayer, MapContainer, Marker} from "react-leaflet";
+import { TileLayer, MapContainer, Marker, Polyline} from "react-leaflet";
 import { MAP_VECTOR_ARRAY } from "../../utils/default/defaults";
 import { blueIcon, getBearingForOrientation, greenIcon, greyIcon, carDefault, carGreen, carYellow } from "./components/Icons";
 import { StyledPop, StyledTooltip } from "./components/StyledComponents";
@@ -19,10 +19,9 @@ import * as _ from 'lodash';
 import { CustomMarker } from "./components/CustomMarker";
 
 export default function Routes({data, options, globalColors}) {
-
     const [pathsFilter, setPathsFilter] = useState(null);
     const [forceRouteUpdate, setForceRouteUpdate] = useState(false)
-
+    const [pathSelected, setPathSelected] = useState(null);
     const [currentIds, setCurrentIds] = useState([]);
 
     useEffect(() => {
@@ -30,9 +29,9 @@ export default function Routes({data, options, globalColors}) {
             setForceRouteUpdate(true);
             setTimeout(() => {
                 setForceRouteUpdate(false);
-            }, 100)
+            }, 50)
         }
-    }, [options.colors_lock, options.colors[0], options.colors[1], options.route_delay, options.route_weight, options.route_dashX, options.route_dashY])
+    }, [options.colors_lock, options.colors, options.route_delay, options.route_weight, options.route_dashX, options.route_dashY,pathSelected])
 
     useEffect(() => {
         if(data.routes){
@@ -112,11 +111,11 @@ export default function Routes({data, options, globalColors}) {
             {data[type] && data[type].map((elem,index) => {
                 return <React.Fragment key={index}>
                     {checkIdActive(elem.id) &&
-                        <Marker key={index} position={elem.coords} icon={icon}>
+                        <Marker key={"type" + index} position={elem.coords} icon={icon}>
                             <StyledPop>
                                 {elem.info}
                             </StyledPop>
-                            {options.permanent_tooltips && <StyledTooltip permanent>
+                            {options.permanent_tooltips && (options.permanent_tooltips_order || options.permanent_tooltips_info) && <StyledTooltip interactive={true} permanent>
                                 {options.permanent_tooltips_order && <div>
                                     <strong>{elem.id}</strong> - <strong>{elem.order}</strong>
                                 </div>}
@@ -138,7 +137,12 @@ export default function Routes({data, options, globalColors}) {
                 return <React.Fragment key={index}>
                     {checkIdActive(elem.id) &&
                         <CustomMarker key={index} position={elem.coordsF} icon={icon} rotationAngle={rotationAngle} rotationOrigin={"center"}>
-                            
+                            <StyledPop>
+                                {elem.info}
+                            </StyledPop>
+                            {options.permanent_tooltips && options.permanent_tooltips_cars && <StyledTooltip interactive={true} permanent>
+                                {elem.info}
+                            </StyledTooltip>}
                         </CustomMarker>
                     }
                 </React.Fragment>
@@ -147,20 +151,56 @@ export default function Routes({data, options, globalColors}) {
         </React.Fragment>
     }
 
+    
+    const handlePathSelected = (id) => {
+        console.log("HELLO")
+        setPathSelected(id);
+    }
+
     const getRoutes = (colors) => {
         let polyline_componets = [];
         if(data.header.routes && !forceRouteUpdate){
             for(let i=0; i<data.header.routes.length; i++){
                 for(let j=0; j<data.routes[data.header.routes[i]].length; j++){
-                        let ant_options = { "delay": options.route_delay, "dashArray": [options.route_dashX,options.route_dashY], "weight": options.route_weight, "color": colors[i], "pulseColor": colors[i], "paused": false, "reverse": false, "hardwareAccelerated": true }
-                        if(checkIdActive(data.routes[data.header.routes[i]][j].id))
-                            polyline_componets.push(
-                                <AntPath key={j + " " + i} positions={data.routes[data.header.routes[i]][j].path} options={{...ant_options}}>
-                                    {data.routes[data.header.routes[i]][j].info && <StyledTooltip sticky>
-                                        {data.routes[data.header.routes[i]][j].info}
-                                    </StyledTooltip>}
-                                </AntPath>
-                            )
+                        let ant_options = { "delay": options.route_delay, "dashArray": [options.route_dashX,options.route_dashY], "paused": false, "reverse": false, "hardwareAccelerated": true }
+                        if(checkIdActive(data.routes[data.header.routes[i]][j].id)){
+                            let custom_weight = options.route_weight;
+                            let custom_key = j + " " + i;
+                            let custom_color = colors[i];
+                            if(pathSelected !== null && pathSelected === custom_key){
+                                custom_weight += 5;
+                                custom_color = colors[data.header.routes.length];
+                            }
+                            if(options.route === "dynamic" ){
+                                
+                                polyline_componets.push(
+                                    <AntPath key={custom_key}
+                                    eventHandlers={{
+                                        click: (e) => {
+                                            handlePathSelected(custom_key);
+                                        }
+                                    }}
+                                     positions={data.routes[data.header.routes[i]][j].path} options={{...ant_options, "weight": custom_weight, "color": custom_color, "pulseColor": custom_color}}>
+                                        {data.routes[data.header.routes[i]][j].info && <StyledTooltip sticky>
+                                            {data.routes[data.header.routes[i]][j].info}
+                                        </StyledTooltip>}
+                                    </AntPath>
+                                )
+                            } else if(options.route === "normal") {
+                                polyline_componets.push(
+                                    <Polyline key={custom_key} eventHandlers={{
+                                        click: (e) => {
+                                            handlePathSelected(custom_key);
+                                        }
+                                    }}
+                                    positions={data.routes[data.header.routes[i]][j].path} pathOptions={{ color: custom_color }}>
+                                        {data.routes[data.header.routes[i]][j].info && <StyledTooltip sticky>
+                                            {data.routes[data.header.routes[i]][j].info}
+                                        </StyledTooltip>}
+                                    </Polyline>
+                                )
+                            }
+                        }
                 }
             }
         }

@@ -1,5 +1,5 @@
 import Link from "@mui/material/Link";
-import { RANDOM_PATH_1 } from "./random_paths";
+import { invertCoords, RANDOM_PATH_1, RANDOM_PATH_2 } from "./random_paths";
 
 export const example_one_numerical_1 = {
     header: {
@@ -252,19 +252,19 @@ export const example_path = {
         "Rota Planeada":[
             {
                 "id": 1,
-                "info": <div>Rota 1_1</div>,
-                "path": RANDOM_PATH_1,
+                "info": <div>Rota 1 - Planeada</div>,
+                "path": invertCoords(RANDOM_PATH_1),
             },
             {
                 "id": 2,
-                "info": <div>Rota 2_1</div>,
-                "path": [[39.993932, -9.125304], [41.234517, -8.524543]],
+                "info": <div>Rota 2 - Planeada</div>,
+                "path": invertCoords(RANDOM_PATH_2),
             },
         ],
         "Rota Completada":[
             {
                 "id": 1,
-                "info": <div>Rota 1_2</div>,
+                "info": <div>Rota 1 - Completada</div>,
                 "path": [[38.367942, -8.529224], [38.646182, -7.828029]],
             }
         ]
@@ -312,10 +312,25 @@ export const example_path = {
             "id": 1,
             "info": <div>
                 <div>
-                    <strong>Some Name 2</strong>
+                    <strong>Posição Atual</strong>
                 </div>
                 <div style={{cursor:'pointer'}}>
-                    <Link underline="hover" onClick={() => {window.open("", '_blank')}}>45268</Link>
+                    <Link underline="hover" onClick={() => {window.open("", '_blank')}}>Brigada 1</Link>
+                </div>
+            </div>,
+            "coordsF": [38.993932, -9.125304],
+            "coordsI": [38.993932, -9.125304],
+        }
+    ],
+    vehicle_gray: [
+        {
+            "id": 1,
+            "info": <div>
+                <div>
+                    <strong>Posição Prevista</strong>
+                </div>
+                <div style={{cursor:'pointer'}}>
+                    <Link underline="hover" onClick={() => {window.open("", '_blank')}}>Brigada 1</Link>
                 </div>
             </div>,
             "coordsF": [38.993932, -9.125304],

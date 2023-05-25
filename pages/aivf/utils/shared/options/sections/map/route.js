@@ -25,6 +25,8 @@ export const getRouteOptions = (options, setOptions) => {
                     {sliderInput(OPTIONS_MAP_ROUTE_DASH_Y, "route_dashY", options, setOptions, {min: 0, max: 100, step:1}, false)}
                 </React.Fragment>
             }
+            
+
         </React.Fragment>
     )
     return getSectionStructure(OPTIONS_MAP_ROUTE, details, null);

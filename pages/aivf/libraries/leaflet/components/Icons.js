@@ -1,11 +1,13 @@
 import L from 'leaflet';
 
+
+const iconPopupAnchor = [12,21];
 export const blueIcon = new L.Icon({
     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
+    popupAnchor: iconPopupAnchor,
     shadowSize: [41, 41]
 });
 export const redIcon = new L.Icon({
@@ -13,7 +15,7 @@ export const redIcon = new L.Icon({
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
+    popupAnchor: iconPopupAnchor,
     shadowSize: [41, 41]
 });
 export const greenIcon = new L.Icon({
@@ -21,7 +23,7 @@ export const greenIcon = new L.Icon({
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
+    popupAnchor: iconPopupAnchor,
     shadowSize: [41, 41],
 });
 export const greyIcon = new L.Icon({
@@ -29,7 +31,7 @@ export const greyIcon = new L.Icon({
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
+    popupAnchor: iconPopupAnchor,
     shadowSize: [41, 41]
 });
 export const yellowIcon = new L.Icon({
@@ -37,16 +39,16 @@ export const yellowIcon = new L.Icon({
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
+    popupAnchor: iconPopupAnchor,
     shadowSize: [41, 41]
 })
 
 
-const carIconSize = [28,56];
-const carIconAnchor = [14, 28];
-const carIconPopupAnchor = [14, 28];
+const carIconSize = [26,52];
+const carIconAnchor = [13, 26];
+const carIconPopupAnchor = [13, 26];
 export const carDefault = new L.Icon({
-    iconUrl: '/car_icon_default.png',
+    iconUrl: '/car_icon_gray.png',
     iconSize: carIconSize,
     iconAnchor: carIconAnchor,
     popupAnchor: carIconPopupAnchor,

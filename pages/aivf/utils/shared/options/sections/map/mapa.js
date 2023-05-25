@@ -30,6 +30,7 @@ export const getMapOptions = (options, setOptions, {stickyTooltip, order}) => {
             {stickyTooltip && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP, "permanent_tooltips", options, setOptions, false)}</React.Fragment>}
             {order && options.permanent_tooltips && 
                 <React.Fragment>
+                    {switchInput("Veículos", "permanent_tooltips_cars", options, setOptions, false)}
                     {switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER, "permanent_tooltips_order", options, setOptions, false)}
                     {switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP_INFO, "permanent_tooltips_info", options, setOptions, false)}
                 </React.Fragment>
