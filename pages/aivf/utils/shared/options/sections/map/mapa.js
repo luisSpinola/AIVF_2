@@ -1,5 +1,5 @@
 import React from "react";
-import { OPTIONS_AXES_INVERT } from "../../../../localization/ptPt";
+import { OPTIONS_MAP, OPTIONS_MAP_PERMANENT_TOOLTIP, OPTIONS_MAP_TILESET_SELECTION } from "../../../../localization/ptPt";
 import { selectInput, switchInput } from "../components/inputs";
 import { getSectionStructure } from "../components/sectionStructure";
 
@@ -9,7 +9,7 @@ import Divider from "@mui/material/Divider";
 export const getMapOptions = (options, setOptions, {stickyTooltip}) => {
     let details = (
         <React.Fragment>
-            {selectInput("Mapa", "map_leaf", options, setOptions, false, 
+            {selectInput(OPTIONS_MAP_TILESET_SELECTION, "map_leaf", options, setOptions, false, 
                 [
                     {value:0, name:"Normal"},
                     {value:1, name:"Normal 2"},
@@ -27,8 +27,8 @@ export const getMapOptions = (options, setOptions, {stickyTooltip}) => {
                     {value:13, name:"Satélite"},
             ]   )
             }
-            {stickyTooltip && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{switchInput("Sticky Tooltip", "sticky_tooltips", options, setOptions, false)}</React.Fragment>}
+            {stickyTooltip && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP, "permanent_tooltips", options, setOptions, false)}</React.Fragment>}
         </React.Fragment>
     )
-    return getSectionStructure("Mapa", details, null);
+    return getSectionStructure(OPTIONS_MAP, details, null);
 }

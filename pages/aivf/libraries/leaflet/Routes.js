@@ -55,7 +55,6 @@ export default function Routes({data, options, globalColors}) {
             //TODO remove
 
             setCurrentIds(new_currentIds);
-            console.log(new_currentIds);
         }
     }, [data]);
 
@@ -131,7 +130,6 @@ export default function Routes({data, options, globalColors}) {
     }
 
     const getVehicles = (type, icon) => {
-        console.log(data[type])
         return <React.Fragment>
             {data[type] && data[type].map((elem,index) => {
                 let rotationAngle = getBearingForOrientation(elem, "2d");

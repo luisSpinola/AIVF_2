@@ -60,5 +60,16 @@ export const OPTIONS_STACKED = "Empilhado";
 
 export const OPTIONS_SECTION_COLOR = "Cor";
 export const OPTIONS_COLOR_OPACITY = "Opacidade";
+
+export const OPTIONS_MAP = "Mapa";
+export const OPTIONS_MAP_PERMANENT_TOOLTIP = "Informação Permanente";
+export const OPTIONS_MAP_TILESET_SELECTION = "Mapa";
+export const OPTIONS_MAP_ROUTE = "Rota";
+export const OPTIONS_MAP_ROUTE_TYPE = "Tipo";
+export const OPTIONS_MAP_ROUTE_TYPE_OPTIONS = ["Normal", "Dinâmica"];
+export const OPTIONS_MAP_ROUTE_WEIGHT = "Largura";
+export const OPTIONS_MAP_ROUTE_DELAY = "Atraso";
+export const OPTIONS_MAP_ROUTE_DASH_X = "X";
+export const OPTIONS_MAP_ROUTE_DASH_Y = "Y";
 //  ADAPT
 export const ADAPT_LOADING = "A adaptar";

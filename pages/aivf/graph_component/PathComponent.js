@@ -28,7 +28,7 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
         colors_lock: true,
 
         map_leaf: 0,
-        sticky_tooltips: false,
+        permanent_tooltips: false,
         
         //  Route
         route: "dynamic", //normal, dynamic
