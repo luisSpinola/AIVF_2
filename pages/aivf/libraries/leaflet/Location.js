@@ -1,7 +1,7 @@
 import React from "react";
 
 //  LEAFLET
-import { TileLayer, MapContainer, Marker } from "react-leaflet";
+import { TileLayer, MapContainer, Marker, GeoJSON } from "react-leaflet";
 import { MAP_VECTOR_ARRAY } from "../../utils/default/defaults";
 import { blueIcon } from "./components/Icons";
 import { StyledPop, StyledTooltip } from "./components/StyledComponents";
@@ -18,7 +18,7 @@ export default function Location({data, options, globalColors}) {
                             <StyledPop>
                                 {elem[data.header.info]}
                             </StyledPop>
-                            {options.sticky_tooltips && <StyledTooltip permanent interactive={true}>
+                            {options.permanent_tooltips && <StyledTooltip permanent interactive={true}>
                                 {elem[data.header.info]}
                             </StyledTooltip>}
                         </Marker>

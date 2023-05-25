@@ -1,9 +1,5 @@
 import L from 'leaflet';
 
-import greeCarImage from './../../../utils/assets/car_top_view_green.png'
-import yellowCarImage from './../../../utils/assets/car_top_view_yellow.png'
-import greyCarImage from './../../../utils/assets/car_top_view_gray.png'
-
 export const blueIcon = new L.Icon({
     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -45,34 +41,33 @@ export const yellowIcon = new L.Icon({
     shadowSize: [41, 41]
 })
 
-export const greenCarIcon = new L.Icon({
-    iconUrl: greeCarImage,
-    iconSize: [14, 32],
-    iconAnchor: [7, 16],
-    popupAnchor: [1, -17],
-    shadowSize: [41, 41],
-    rotationAngle: (90*Math.PI)/180
-});
-export const yellowCarIcon = new L.Icon({
-    iconUrl: yellowCarImage,
-    iconSize: [14, 32],
-    iconAnchor: [7, 16],
-    popupAnchor: [1, -17],
-    shadowSize: [41, 41],
+
+const carIconSize = [28,56];
+const carIconAnchor = [14, 28];
+const carIconPopupAnchor = [14, 28];
+export const carDefault = new L.Icon({
+    iconUrl: '/car_icon_default.png',
+    iconSize: carIconSize,
+    iconAnchor: carIconAnchor,
+    popupAnchor: carIconPopupAnchor,
     iconAngle: 0
 });
-export const greyCarIcon = new L.Icon({
-    iconUrl: greyCarImage,
-    iconSize: [14, 32],
-    iconAnchor: [7, 16],
-    popupAnchor: [1, -17],
-    shadowSize: [41, 41],
+export const carGreen = new L.Icon({
+    iconUrl: '/car_icon_green.png',
+    iconSize: carIconSize,
+    iconAnchor: carIconAnchor,
+    popupAnchor: carIconPopupAnchor,
+    iconAngle: 0
+});
+export const carYellow = new L.Icon({
+    iconUrl: '/car_icon_yellow.png',
+    iconSize: carIconSize,
+    iconAnchor: carIconAnchor,
+    popupAnchor: carIconPopupAnchor,
     iconAngle: 0
 });
 
 export function getBearingForOrientation(d){
-    //let coord1 =  [d.coordsI[1], d.coordsI[0]];
-    //let coord2 =  [d.coordsF[1], d.coordsF[0]];
     let coord1 =  d.coordsI;
     let coord2 =  d.coordsF;
     let deltaL = coord2[0] - coord1[0];

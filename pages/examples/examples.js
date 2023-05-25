@@ -1,4 +1,5 @@
 import Link from "@mui/material/Link";
+import { RANDOM_PATH_1 } from "./random_paths";
 
 export const example_one_numerical_1 = {
     header: {
@@ -252,7 +253,7 @@ export const example_path = {
             {
                 "id": 1,
                 "info": <div>Rota 1_1</div>,
-                "path": [[38.993932, -9.125304], [41.234517, -8.524543]],
+                "path": RANDOM_PATH_1,
             },
             {
                 "id": 2,
@@ -294,7 +295,14 @@ export const example_path = {
         {
             "id": 1,
             "order": 1,
-            "info": <div>Icon Completed 1_1</div>,
+            "info": <div>
+                <div>
+                    <strong>Some Name</strong>
+                </div>
+                <div style={{cursor:'pointer'}}>
+                    <Link underline="hover" onClick={() => {window.open("", '_blank')}}>45268</Link>
+                </div>
+            </div>,
             "coords": [38.993932, -9.125304]
         },
     ],
@@ -302,7 +310,14 @@ export const example_path = {
     vehicle_green: [
         {
             "id": 1,
-            "info": <div>Car_1</div>,
+            "info": <div>
+                <div>
+                    <strong>Some Name 2</strong>
+                </div>
+                <div style={{cursor:'pointer'}}>
+                    <Link underline="hover" onClick={() => {window.open("", '_blank')}}>45268</Link>
+                </div>
+            </div>,
             "coordsF": [38.993932, -9.125304],
             "coordsI": [38.993932, -9.125304],
         }

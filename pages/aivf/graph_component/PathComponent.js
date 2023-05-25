@@ -29,6 +29,8 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
 
         map_leaf: 0,
         permanent_tooltips: false,
+        permanent_tooltips_order: true,
+        permanent_tooltips_info: false,
         
         //  Route
         route: "dynamic", //normal, dynamic
@@ -56,7 +58,7 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
 
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions, {grouped: false, stacked: false, width: false})}
-            {getMapOptions(options, setOptions, {stickyTooltip: true})}
+            {getMapOptions(options, setOptions, {stickyTooltip: true, order:true})}
             {getRouteOptions(options, setOptions)}
             {getMarginOptions(options, setOptions)}
             <ColorSelector option="colors" options={options} setOptions={setOptions} size={colors_length} opacity={false} section={true} colors={colors}/>

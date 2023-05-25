@@ -1,12 +1,12 @@
 import React from "react";
-import { OPTIONS_MAP, OPTIONS_MAP_PERMANENT_TOOLTIP, OPTIONS_MAP_TILESET_SELECTION } from "../../../../localization/ptPt";
+import { OPTIONS_MAP, OPTIONS_MAP_PERMANENT_TOOLTIP, OPTIONS_MAP_PERMANENT_TOOLTIP_INFO, OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER, OPTIONS_MAP_TILESET_SELECTION } from "../../../../localization/ptPt";
 import { selectInput, switchInput } from "../components/inputs";
 import { getSectionStructure } from "../components/sectionStructure";
 
 //  MUI
 import Divider from "@mui/material/Divider";
 
-export const getMapOptions = (options, setOptions, {stickyTooltip}) => {
+export const getMapOptions = (options, setOptions, {stickyTooltip, order}) => {
     let details = (
         <React.Fragment>
             {selectInput(OPTIONS_MAP_TILESET_SELECTION, "map_leaf", options, setOptions, false, 
@@ -28,6 +28,12 @@ export const getMapOptions = (options, setOptions, {stickyTooltip}) => {
             ]   )
             }
             {stickyTooltip && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP, "permanent_tooltips", options, setOptions, false)}</React.Fragment>}
+            {order && options.permanent_tooltips && 
+                <React.Fragment>
+                    {switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER, "permanent_tooltips_order", options, setOptions, false)}
+                    {switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP_INFO, "permanent_tooltips_info", options, setOptions, false)}
+                </React.Fragment>
+            }
         </React.Fragment>
     )
     return getSectionStructure(OPTIONS_MAP, details, null);

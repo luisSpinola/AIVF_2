@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 
 //  LEAFLET
-import { TileLayer, MapContainer, Marker } from "react-leaflet";
+import { TileLayer, MapContainer, Marker} from "react-leaflet";
 import { MAP_VECTOR_ARRAY } from "../../utils/default/defaults";
-import { blueIcon, getBearingForOrientation, greenCarIcon, greenIcon, greyIcon } from "./components/Icons";
+import { blueIcon, getBearingForOrientation, greenIcon, greyIcon, carDefault, carGreen, carYellow } from "./components/Icons";
 import { StyledPop, StyledTooltip } from "./components/StyledComponents";
 import AntPath from "./components/AntPath";
 
@@ -66,12 +66,12 @@ export default function Routes({data, options, globalColors}) {
                 <MapContainer style={{height: "100%", minHeight: "100%", maxHeight:'100%'}} center={[data.header.view_port.latitude, data.header.view_port.longitude]} zoom={data.header.view_port.zoom + 1} scrollWheelZoom={true}>
                     <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url={MAP_VECTOR_ARRAY[options.map_leaf]}/>
                     
+                    {getVehicles("vehicle_green",carGreen)}
+                    {getVehicles("vehicle_gray",carDefault)}
+                    {getVehicles("vehicle_yellow",carYellow)}
                     {getIcons("icon_gray",greyIcon)}
                     {getIcons("icon_blue",blueIcon)}
                     {getIcons("icon_green",greenIcon)}
-
-                    {getVehicles("vehicle_green",greenCarIcon)}
-
                     {getRoutes(colors)}
                 </MapContainer>
             </div>
@@ -116,11 +116,12 @@ export default function Routes({data, options, globalColors}) {
                             <StyledPop>
                                 {elem.info}
                             </StyledPop>
-                            <StyledTooltip permanent>
-                                <div>
+                            {options.permanent_tooltips && <StyledTooltip permanent>
+                                {options.permanent_tooltips_order && <div>
                                     <strong>{elem.id}</strong> - <strong>{elem.order}</strong>
-                                </div>
-                            </StyledTooltip>
+                                </div>}
+                                {options.permanent_tooltips_info && elem.info}
+                            </StyledTooltip>}
                         </Marker>
                     }
                 </React.Fragment>

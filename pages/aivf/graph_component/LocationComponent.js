@@ -24,7 +24,7 @@ export default function LocationComponent({id, data, optionsFlag, plotsInfo, ide
         colors: VALUE_COLOR,
         colors_lock: true,
         map_leaf: 0,
-        sticky_tooltips: false
+        permanent_tooltips: false
     })
 
     const[needAdapt, setNeedAdapt] = useState(false);
@@ -41,7 +41,7 @@ export default function LocationComponent({id, data, optionsFlag, plotsInfo, ide
     const sidebarOptions = () => {
         let sections = <React.Fragment>
             {getGeneralOptions(options, setOptions, {grouped: false, stacked: false, width: false})}
-            {getMapOptions(options, setOptions, {stickyTooltip: true})}
+            {getMapOptions(options, setOptions, {stickyTooltip: true, order:false})}
             {getMarginOptions(options, setOptions)}
             <SaveButton id={id} options={options} identifier={identifier} plotsInfo={plotsInfo}/>
         </React.Fragment>

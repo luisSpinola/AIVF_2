@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 const Location = dynamic(() => import("./Location"), { ssr: false });
 const Routes = dynamic(() => import("./Routes"), { ssr: false });
 

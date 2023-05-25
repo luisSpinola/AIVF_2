@@ -63,6 +63,8 @@ export const OPTIONS_COLOR_OPACITY = "Opacidade";
 
 export const OPTIONS_MAP = "Mapa";
 export const OPTIONS_MAP_PERMANENT_TOOLTIP = "Informação Permanente";
+export const OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER = "Ordem";
+export const OPTIONS_MAP_PERMANENT_TOOLTIP_INFO = "Informação";
 export const OPTIONS_MAP_TILESET_SELECTION = "Mapa";
 export const OPTIONS_MAP_ROUTE = "Rota";
 export const OPTIONS_MAP_ROUTE_TYPE = "Tipo";
