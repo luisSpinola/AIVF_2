@@ -140,9 +140,12 @@ export default function Routes({data, options, globalColors}) {
                             <StyledPop>
                                 {elem.info}
                             </StyledPop>
-                            {options.permanent_tooltips && options.permanent_tooltips_cars && <StyledTooltip interactive={true} permanent>
-                                {elem.info}
-                            </StyledTooltip>}
+                            {(type !== "vehicle_gray" || (type === "vehicle_gray" && !options.permanent_tooltips_cars_no_ghost))&&<React.Fragment>
+                                    {options.permanent_tooltips && options.permanent_tooltips_cars && <StyledTooltip interactive={true} permanent>
+                                        {elem.info}
+                                    </StyledTooltip>}
+                                </React.Fragment>
+                            }
                         </CustomMarker>
                     }
                 </React.Fragment>
@@ -151,10 +154,11 @@ export default function Routes({data, options, globalColors}) {
         </React.Fragment>
     }
 
-    
     const handlePathSelected = (id) => {
-        console.log("HELLO")
-        setPathSelected(id);
+        if(pathSelected !== id)
+            setPathSelected(id);
+        else
+            setPathSelected(null);
     }
 
     const getRoutes = (colors) => {

@@ -31,6 +31,7 @@ export const getMapOptions = (options, setOptions, {stickyTooltip, order}) => {
             {order && options.permanent_tooltips && 
                 <React.Fragment>
                     {switchInput("Veículos", "permanent_tooltips_cars", options, setOptions, false)}
+                    {options.permanent_tooltips_cars && switchInput("Excluir previsão", "permanent_tooltips_cars_no_ghost", options, setOptions, false)}
                     {switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER, "permanent_tooltips_order", options, setOptions, false)}
                     {switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP_INFO, "permanent_tooltips_info", options, setOptions, false)}
                 </React.Fragment>

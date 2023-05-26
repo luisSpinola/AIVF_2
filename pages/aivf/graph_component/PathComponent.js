@@ -31,6 +31,7 @@ export default function PathComponent({id, data, optionsFlag, plotsInfo, identif
         permanent_tooltips: false,
         permanent_tooltips_order: true,
         permanent_tooltips_cars: true,
+        permanent_tooltips_cars_no_ghost: true,
         permanent_tooltips_info: false,
         
         //  Route
