@@ -1,4 +1,5 @@
 import React from "react";
+
 import { OPTIONS_GROUPED, OPTIONS_HEIGHT, OPTIONS_SECTION_GENERAL, OPTIONS_STACKED } from "../../../../localization/ptPt";
 import { sliderInput, switchInput } from "../components/inputs";
 import { getSectionStructure } from "../components/sectionStructure";

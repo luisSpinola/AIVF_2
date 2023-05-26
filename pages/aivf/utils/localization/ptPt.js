@@ -54,12 +54,26 @@ export const OPTIONS_SECTION_LEGEND = "Legenda";
 export const OPTIONS_LEGEND_POS = "Posição";
 export const OPTIONS_LEGEND_DIR = "Direção";
 export const OPTIONS_LEGEND_ALIGN = "Alinhamento";
+export const OPTIONS_LEGEND_ALIGN_CENTER = "Centro";
+export const OPTIONS_LEGEND_ALIGN_LEFT = "Esquerda";
+export const OPTIONS_LEGEND_ALIGN_RIGHT = "Direita";
+
+export const OPTIONS_LINE = "Linha";
+export const OPTIONS_LINE_STROKE = "Tamanho";
+export const OPTIONS_LINE_DOTS = "Pontos";
+export const OPTIONS_LINE_LINEAR = "Linear";
+export const OPTIONS_LINE_MONOTOME = "Monotome";
+export const OPTIONS_LINE_STEP = "Step";
+export const OPTIONS_LINE_FUNCTION = "Natural";
+export const OPTIONS_LINE_NATURAL = "Function";
+export const OPTIONS_LINE_BASIS = "Basis";
 
 export const OPTIONS_GROUPED = "Agrupado";
 export const OPTIONS_STACKED = "Empilhado";
 
 export const OPTIONS_SECTION_COLOR = "Cor";
 export const OPTIONS_COLOR_OPACITY = "Opacidade";
+export const OPTIONS_COLOR_LOCK = "Esquema Geral";
 
 export const OPTIONS_MAP = "Mapa";
 export const OPTIONS_MAP_PERMANENT_TOOLTIP = "Informação Permanente";

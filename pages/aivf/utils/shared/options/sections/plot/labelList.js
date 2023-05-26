@@ -1,4 +1,5 @@
 import React from "react";
+
 import { OPTIONS_LABELLIST_ANG, OPTIONS_LABELLIST_OFFSET, OPTIONS_LABELLIST_POS, OPTIONS_LABELLIST_POS_BOTTOM, OPTIONS_LABELLIST_POS_CENTER, OPTIONS_LABELLIST_POS_TOP, OPTIONS_SECTION_LABELLIST} from "../../../../localization/ptPt";
 import { selectInput, sliderInput, updateOptions } from "../components/inputs";
 import { getSectionStructure } from "../components/sectionStructure";

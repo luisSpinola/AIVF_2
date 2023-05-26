@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { OPTIONS_COLOR_OPACITY, OPTIONS_SECTION_COLOR } from "../../../../localization/ptPt";
+import { OPTIONS_COLOR_LOCK, OPTIONS_COLOR_OPACITY, OPTIONS_SECTION_COLOR } from "../../../../localization/ptPt";
 import { getSectionStructure } from "../components/sectionStructure";
 import { sliderInput, switchInput, updateOptions } from "../components/inputs";
 
@@ -68,7 +68,7 @@ export default function ColorSelector({option, options, setOptions, size, opacit
     const getDetails = () => {
         let colorsDisplay = getColorsDisplay();
         return <React.Fragment>
-            {colors && switchInput("Esquema Geral", "colors_lock", options, setOptions, false)}
+            {colors && switchInput(OPTIONS_COLOR_LOCK, "colors_lock", options, setOptions, false)}
             {!options.colors_lock && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{colorsDisplay}</React.Fragment>}
             {!colors && colorsDisplay}
             

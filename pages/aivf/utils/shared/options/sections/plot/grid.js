@@ -1,4 +1,5 @@
 import React from "react";
+
 import { OPTIONS_GRID_HORIZONTAL, OPTIONS_GRID_OPACITY, OPTIONS_GRID_STROKE, OPTIONS_GRID_VERTICAL, OPTIONS_SECTION_GRID } from "../../../../localization/ptPt";
 import { sliderInput, switchInput, updateOptions } from "../components/inputs";
 import { getSectionStructure } from "../components/sectionStructure";
