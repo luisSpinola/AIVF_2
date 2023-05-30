@@ -1,5 +1,5 @@
 import React from "react";
-import { OPTIONS_MAP, OPTIONS_MAP_PERMANENT_TOOLTIP, OPTIONS_MAP_PERMANENT_TOOLTIP_INFO, OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER, OPTIONS_MAP_TILESET_SELECTION, OPTIONS_MAP_TILESET_SELECTION_NORMAL_1, OPTIONS_MAP_TILESET_SELECTION_NORMAL_2, OPTIONS_MAP_TILESET_SELECTION_NORMAL_3, OPTIONS_MAP_TILESET_SELECTION_NORMAL_4, OPTIONS_MAP_TILESET_SELECTION_SATELLITE, OPTIONS_MAP_TILESET_SELECTION_SIMPLE_1, OPTIONS_MAP_TILESET_SELECTION_SIMPLE_2, OPTIONS_MAP_TILESET_SELECTION_SIMPLE_3, OPTIONS_MAP_TILESET_SELECTION_SIMPLE_DARK_1, OPTIONS_MAP_TILESET_SELECTION_TERRAIN_1, OPTIONS_MAP_TILESET_SELECTION_TERRAIN_2, OPTIONS_MAP_TILESET_SELECTION_TERRAIN_3, OPTIONS_MAP_TILESET_SELECTION_TOPOLOGY_1, OPTIONS_MAP_TILESET_SELECTION_TOPOLOGY_2 } from "../../../../localization/ptPt";
+import { OPTIONS_MAP, OPTIONS_MAP_PERMANENT_TOOLTIP, OPTIONS_MAP_PERMANENT_TOOLTIP_INFO, OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER, OPTIONS_MAP_TILESET_SELECTION, OPTIONS_MAP_TILESET_SELECTION_NORMAL_1, OPTIONS_MAP_TILESET_SELECTION_NORMAL_2, OPTIONS_MAP_TILESET_SELECTION_NORMAL_3, OPTIONS_MAP_TILESET_SELECTION_NORMAL_4, OPTIONS_MAP_TILESET_SELECTION_SATELLITE, OPTIONS_MAP_TILESET_SELECTION_SIMPLE_1, OPTIONS_MAP_TILESET_SELECTION_SIMPLE_2, OPTIONS_MAP_TILESET_SELECTION_SIMPLE_3, OPTIONS_MAP_TILESET_SELECTION_SIMPLE_DARK_1, OPTIONS_MAP_TILESET_SELECTION_TERRAIN_1, OPTIONS_MAP_TILESET_SELECTION_TERRAIN_2, OPTIONS_MAP_TILESET_SELECTION_TERRAIN_3, OPTIONS_MAP_TILESET_SELECTION_TOPOLOGY_1, OPTIONS_MAP_TILESET_SELECTION_TOPOLOGY_2, OPTIONS_MAP_VEHICLES } from "../../../../localization/ptPt";
 import { selectInput, switchInput } from "../components/inputs";
 import { getSectionStructure } from "../components/sectionStructure";
 
@@ -30,7 +30,7 @@ export const getMapOptions = (options, setOptions, {stickyTooltip, order}) => {
             {stickyTooltip && <React.Fragment><Divider style={{marginBottom:'0.5rem', marginTop:'0.5rem'}}/>{switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP, "permanent_tooltips", options, setOptions, false)}</React.Fragment>}
             {order && options.permanent_tooltips && 
                 <React.Fragment>
-                    {switchInput("Veículos", "permanent_tooltips_cars", options, setOptions, false)}
+                    {switchInput(OPTIONS_MAP_VEHICLES, "permanent_tooltips_cars", options, setOptions, false)}
                     {options.permanent_tooltips_cars && switchInput("Excluir previsão", "permanent_tooltips_cars_no_ghost", options, setOptions, false)}
                     {switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER, "permanent_tooltips_order", options, setOptions, false)}
                     {switchInput(OPTIONS_MAP_PERMANENT_TOOLTIP_INFO, "permanent_tooltips_info", options, setOptions, false)}

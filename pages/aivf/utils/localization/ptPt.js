@@ -76,6 +76,7 @@ export const OPTIONS_COLOR_OPACITY = "Opacidade";
 export const OPTIONS_COLOR_LOCK = "Esquema Geral";
 
 export const OPTIONS_MAP = "Mapa";
+export const OPTIONS_MAP_VEHICLES = "Veículos";
 export const OPTIONS_MAP_PERMANENT_TOOLTIP = "Informação Permanente";
 export const OPTIONS_MAP_PERMANENT_TOOLTIP_ORDER = "Ordem";
 export const OPTIONS_MAP_PERMANENT_TOOLTIP_INFO = "Informação (ícones)";
