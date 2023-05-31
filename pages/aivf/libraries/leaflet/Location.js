@@ -23,7 +23,7 @@ export default function Location({data, options, globalColors}) {
                             </StyledTooltip>}
                         </Marker>
                     })}
-                </MapContainer>;
+                </MapContainer>
             </div>
         )
     }
