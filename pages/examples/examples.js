@@ -151,6 +151,7 @@ export const example_timeseries_1 =
         "value": ["value_name1","value_name2","value_name3"]
     },
     "data": [
+        
         { 
             "date": new Date("05/05/2019"),
             "value_name1": 4000,
@@ -192,7 +193,18 @@ export const example_timeseries_1 =
             "value_name1": 8000,
             "value_name2": 7000,
             "value_name3": 1000
-        }
+        },{ 
+            "date": new Date("05/05/1970"),
+            "value_name1": 4000,
+            "value_name2": 9000,
+            "value_name3": 1000
+        },
+        { 
+            "date": new Date("05/05/1971"),
+            "value_name1": 4000,
+            "value_name2": 9000,
+            "value_name3": 1000
+        },
     ]
 }
 
